@@ -1,42 +1,33 @@
 name: Gemini Programming Team - Release & Manual APK XML Integrator
 
-# 🔥 【ここが隊員の指定ポイント！】
-# リリースの作成・編集、または画面からのボタンポチ（手動）で起動するハイブリッド仕様だ！
 on:
   release:
     types: [published, edited]
-  workflow_dispatch: # これを入れるだけで、GitHub上に「ボタンポチ」の起動ボタンが出現するぞ！
+  workflow_dispatch: # いつでも画面からボタンポチで再挑戦できる最強の保険！
 
 jobs:
   integrate-xml:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 基地（リポジトリ）のソースコードを展開
+    # 1. 基地（リポジトリ）のソースコードを展開（ここでトップにあるAPKEditor.jarも一緒に読み込まれるぞ！）
     - name: 🛰️ [ACTION] 基地のコードを展開中...
       uses: actions/checkout@v4
 
-    # 2. 戦闘力最大化！高バージョンJava環境を構築
+    # 2. 高バージョンJava環境を爆速構築
     - name: ☕ [VALUE_CHANGE] 高バージョンJava環境 (Oracle JDK 21) をインジェクション！
       uses: actions/setup-java@v4
       with:
         distribution: 'oracle'
         java-version: '21'
 
-    # 3. Javaの起動チェック
+    # 3. Javaの起動＆バージョンチェック
     - name: 🔍 [SYSTEM] Javaバージョンを徹底チェック
       run: |
         java -version
         echo "[VALUE_CHANGE] 高火力Javaエンジンの正常起動を確認しました。"
 
-    # 4. APKEditor.jar の爆速調達
-    - name: 🛠️ [SYSTEM] APKEditor.jar をダウンロード
-      run: |
-        mkdir -p bin
-        curl -L -o bin/APKEditor.jar https://github.com/REAndroid/APKEditor/releases/latest/download/APKEditor.jar
-        echo "[VALUE_CHANGE] bin/APKEditor.jar の配備完了。"
-
-    # 5. 【新兵器】リリースに添付されたAPK/APKSを全自動でぶっこ抜く！
+    # 4. 【新兵器】リリースに添付された20MB超えのAPK/APKSを全自動でぶっこ抜く！
     - name: 📥 [ACTION] リソース全取得（リリースアセットのダウンロード）
       env:
         GH_TOKEN: ${{ github.token }}
@@ -44,8 +35,7 @@ jobs:
         echo "[SYSTEM] リリースに添付されたバイナリの探索を開始します。"
         mkdir -p apk_download
         
-        # GitHub CLI (gh) を使って、最新のリリースアセットをフォルダーに一括ダウンロード！
-        # これにより20MB超えの巨大ファイルもGitHubサーバー間で安全に高速転送されるぞ！
+        # GitHub CLI (gh) を使い、サーバー間超高速通信でリリースからAPK群を一括確保！
         gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apk" --dir apk_download || true
         gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apks" --dir apk_download || true
         
@@ -54,32 +44,32 @@ jobs:
         
         if [ -z "$TARGET_FILE" ]; then
           echo "[ERROR] 警告：対象の .apk または .apks ファイルが見つかりません！"
-          echo "[SYSTEM] 手動ボタンポチの場合は、最新のリリースに対象ファイルがあるか確認してください。"
+          echo "[SYSTEM] 最新のリリースに対象ファイルが正しく添付されているか確認してください。"
           exit 1
         fi
         
         echo "[VALUE_CHANGE] ターゲットアセットの確保に成功：$TARGET_FILE"
         echo "TARGET_PATH=$TARGET_FILE" >> $GITHUB_ENV
 
-    # 6. APKEditorのD・Mコマンドを最適化実行
-    - name: 🚀 [ACTION] APKEditorによる逆コンパイル（XMLテキスト化）
+    # 5. 【最適化！】トップ配置の APKEditor.jar を使って逆コンパイル実行！
+    - name: 🚀 [ACTION] リポジトリトップの APKEditor.jar による逆コンパイル（XMLテキスト化）
       run: |
         TARGET_FILE="${{ env.TARGET_PATH }}"
         
-        # APKS（分割型）ならMコマンドで単一APKに結合
+        # APKS（分割型）ならMコマンドで単一APKに結合（トップのjarを直接叩くぞ！）
         if [[ "$TARGET_FILE" == *.apks ]]; then
           echo "[VALUE_CHANGE] APKSを検知。マージ作戦（M）を始動します！"
-          java -jar bin/APKEditor.jar m -i "$TARGET_FILE" -o apk_download/merged_output.apk
+          java -jar APKEditor.jar m -i "$TARGET_FILE" -o apk_download/merged_output.apk
           TARGET_FILE="apk_download/merged_output.apk"
           echo "[SYSTEM] マージ完了。単一APKを生成しました。"
         fi
         
-        # DコマンドでバイナリXMLを完全テキスト化
-        echo "[VALUE_CHANGE] 高バージョンJavaパワーで逆コンパイル（D）を実行！"
-        java -jar bin/APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
+        # DコマンドでバイナリXMLを完全テキスト化（ここもトップのjarで直撃！）
+        echo "[VALUE_CHANGE] 高バージョンJavaパワー ＆ トップのAPKEditor.jar で逆コンパイル（D）を実行！"
+        java -jar APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
         echo "[SYSTEM] すべてのバイナリXMLがプレインテキストに復元されました。"
 
-    # 7. 全XMLの1ファイル一括統合処理（余計なことはしない隊員指定のピュア仕様）
+    # 6. 全XMLの1ファイル一括統合処理（カカオマメ隊員指定のピュア仕様）
     - name: 📂 [VALUE_CHANGE] 全XMLファイルを1つに結合・ガッチャンコ
       run: |
         echo "[ACTION] 展開された全XMLを1本の統合ファイルにまとめます。"
@@ -105,14 +95,4 @@ jobs:
         
         # 統合ファイルのエンドタグ
         echo "</integrated_apk_data>" >> web_output/all_in_one.xml
-        echo "[VALUE_CHANGE] web_output/all_in_one.xml への一括統合が完全に完了しました！"
-
-    # 8. 生成された統合XML（all_in_one.xml）をGitHubリポジトリにプッシュ
-    - name: 🛰️ [SYSTEM] 統合XMLを基地（リポジトリ）へ自動コミット
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action [XML-Integrator-Bot]"
-        git add web_output/all_in_one.xml
-        git commit -m "VALUE_CHANGE: リリースアセットからXML一括統合完了 [skip ci]" || echo "変更なし"
-        git push
-        echo "[SYSTEM] 作戦大成功！これにてiPad Safariからの迎撃準備が整ったぞ！"
+        echo "[VALUE_CHANGE] web_output/all_in
