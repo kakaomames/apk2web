@@ -1,33 +1,34 @@
 name: Gemini Programming Team - Release & Manual APK XML Integrator
 
+# リリースの公開・編集、または画面からのボタンポチ（手動トリガー）でいつでも起動！
 on:
   release:
     types: [published, edited]
-  workflow_dispatch: # いつでも画面からボタンポチで再挑戦できる最強の保険！
+  workflow_dispatch: # これがあるから、失敗してもアップロードし直さずにボタンポチで再挑戦できる！
 
 jobs:
   integrate-xml:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. 基地（リポジトリ）のソースコードを展開（ここでトップにあるAPKEditor.jarも一緒に読み込まれるぞ！）
+    # 1. 基地（リポジトリ）のソースコードを展開（トップにあるAPKEditor.jarも一緒に読み込まれます）
     - name: 🛰️ [ACTION] 基地のコードを展開中...
       uses: actions/checkout@v4
 
-    # 2. 高バージョンJava環境を爆速構築
+    # 2. 高バージョンJava環境の構築
     - name: ☕ [VALUE_CHANGE] 高バージョンJava環境 (Oracle JDK 21) をインジェクション！
       uses: actions/setup-java@v4
       with:
         distribution: 'oracle'
         java-version: '21'
 
-    # 3. Javaの起動＆バージョンチェック
+    # 3. Javaの起動チェック
     - name: 🔍 [SYSTEM] Javaバージョンを徹底チェック
       run: |
         java -version
         echo "[VALUE_CHANGE] 高火力Javaエンジンの正常起動を確認しました。"
 
-    # 4. 【修正版】カカオマメ隊員指定のタグ「apks」または現在のリリースタグから確実にぶっこ抜く！
+    # 4. カカオマメ隊員指定のタグ「apks」または現在のリリースタグから確実にダウンロード！
     - name: 📥 [ACTION] リソース全取得（リリースアセットのダウンロード）
       env:
         GH_TOKEN: ${{ github.token }}
@@ -35,14 +36,14 @@ jobs:
         echo "[SYSTEM] リリースに添付されたバイナリの探索を開始します。"
         mkdir -p apk_download
         
-        # 1. 起動トリガーとなったリリースタグ名を取得。もし空（手動ボタンポチ等）なら、隊員の「apks」をターゲットにする！
+        # 起動トリガーとなったリリースタグ名を取得。空（手動ボタンポチ等）なら「apks」をターゲットにする！
         RELEASE_TAG="${{ github.event.release.tag_name }}"
         if [ -z "$RELEASE_TAG" ]; then
           RELEASE_TAG="apks"
         fi
         echo "[SYSTEM] ターゲットとするリリースタグ: $RELEASE_TAG"
         
-        # 2. 指定したタグ名（apks等）を狙い撃ちして超高速ダウンロード！
+        # 指定したタグ名を狙い撃ちして超高速ダウンロード！
         gh release download "$RELEASE_TAG" --pattern "*.apk" --dir apk_download || true
         gh release download "$RELEASE_TAG" --pattern "*.apks" --dir apk_download || true
         
@@ -51,20 +52,19 @@ jobs:
         
         if [ -z "$TARGET_FILE" ]; then
           echo "[ERROR] 警告：対象の .apk または .apks ファイルが見つかりません！"
-          echo "[SYSTEM] リリース（タグ: $RELEASE_TAG）にファイルが正しく添付されているか確認してください。"
+          echo "[SYSTEM] リッセージ（タグ: $RELEASE_TAG）にファイルが正しく添付されているか確認してください。"
           exit 1
         fi
         
         echo "[VALUE_CHANGE] ターゲットアセットの確保に成功：$TARGET_FILE"
         echo "TARGET_PATH=$TARGET_FILE" >> $GITHUB_ENV
 
-
-    # 5. 【最適化！】トップ配置の APKEditor.jar を使って逆コンパイル実行！
+    # 5. リポジトリのトップにある APKEditor.jar で逆コンパイルを実行！
     - name: 🚀 [ACTION] リポジトリトップの APKEditor.jar による逆コンパイル（XMLテキスト化）
       run: |
         TARGET_FILE="${{ env.TARGET_PATH }}"
         
-        # APKS（分割型）ならMコマンドで単一APKに結合（トップのjarを直接叩くぞ！）
+        # APKS（分割型）ならMコマンドで単一APKに結合
         if [[ "$TARGET_FILE" == *.apks ]]; then
           echo "[VALUE_CHANGE] APKSを検知。マージ作戦（M）を始動します！"
           java -jar APKEditor.jar m -i "$TARGET_FILE" -o apk_download/merged_output.apk
@@ -72,12 +72,12 @@ jobs:
           echo "[SYSTEM] マージ完了。単一APKを生成しました。"
         fi
         
-        # DコマンドでバイナリXMLを完全テキスト化（ここもトップのjarで直撃！）
+        # DコマンドでバイナリXMLを完全テキスト化
         echo "[VALUE_CHANGE] 高バージョンJavaパワー ＆ トップのAPKEditor.jar で逆コンパイル（D）を実行！"
         java -jar APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
         echo "[SYSTEM] すべてのバイナリXMLがプレインテキストに復元されました。"
 
-    # 6. 全XMLの1ファイル一括統合処理（カカオマメ隊員指定のピュア仕様）
+    # 6. 全XMLファイルを1つに結合・ガッチャンコ（構文エラー完全修復済み）
     - name: 📂 [VALUE_CHANGE] 全XMLファイルを1つに結合・ガッチャンコ
       run: |
         echo "[ACTION] 展開された全XMLを1本の統合ファイルにまとめます。"
@@ -103,4 +103,14 @@ jobs:
         
         # 統合ファイルのエンドタグ
         echo "</integrated_apk_data>" >> web_output/all_in_one.xml
-        echo "[VALUE_CHANGE] web_output/all_in
+        echo "[VALUE_CHANGE] web_output/all_in_one.xml への一括統合が完全に完了しました！"
+
+    # 7. 生成された統合XML（all_in_one.xml）をGitHubリポジトリに自動プッシュ
+    - name: 🛰️ [SYSTEM] 統合XMLを基地（リポジトリ）へ自動コミット
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action [XML-Integrator-Bot]"
+        git add web_output/all_in_one.xml
+        git commit -m "VALUE_CHANGE: リースアセットからXML一括統合完了 [skip ci]" || echo "変更なし"
+        git push
+        echo "[SYSTEM] 作戦大成功！web_output/all_in_one.xml が最新状態に更新されました！"
