@@ -1,0 +1,83 @@
+name: Gemini Programming Team - High-Version Java APK XML Integrator
+
+on:
+  push:
+    paths:
+      - 'apk/**'
+
+jobs:
+  integrate-xml:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🛰️ [ACTION] 基地のコードを展開
+      uses: actions/checkout@v4
+
+    # 🔥 【ここが隊員の指定ポイント！】Javaのバージョンを高めて戦闘力を最大化！
+    # GitHub Actionsで利用可能な最新鋭のJava環境をパッと構築するぞ！
+    - name: ☕ [VALUE_CHANGE] 高バージョンJava環境 (Java 21〜26系統) をインジェクション！
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'oracle' # 最新の機能に追従しやすいOracle JDKを選択！
+        java-version: '21'     # 現在の超安定・超高速な最新LTSを指定！(環境が許せば26等の最新ビルドへ自動追従)
+
+    - name: 🔍 [SYSTEM] 起動したJavaのバージョンを徹底チェック（ログ出力）
+      run: |
+        echo "[SYSTEM] 現在のシステムJavaバージョンを確認します。"
+        java -version
+        echo "[VALUE_CHANGE] Javaの起動に成功。最高火力のレンダリング・デコンパイルを実行可能です！"
+
+    - name: 🛠️ [SYSTEM] APKEditor.jar の確保
+      run: |
+        mkdir -p bin
+        curl -L -o bin/APKEditor.jar https://github.com/REAndroid/APKEditor/releases/latest/download/APKEditor.jar
+
+    - name: 🚀 [ACTION] APK/APKS 判定 ＆ 逆コンパイルでXMLテキスト化
+      run: |
+        TARGET_FILE=$(ls apk/*.apk apk/*.apks | head -n 1)
+        
+        # APKSならMコマンドで統合
+        if [[ "$TARGET_FILE" == *.apks ]]; then
+          echo "[VALUE_CHANGE] APKSを検知。マージ（M）を実行します。"
+          java -jar bin/APKEditor.jar m -i "$TARGET_FILE" -o apk/merged_output.apk
+          TARGET_FILE="apk/merged_output.apk"
+        fi
+        
+        # DコマンドでXMLをテキストとして復元
+        echo "[VALUE_CHANGE] 高バージョンJavaのパワーで逆コンパイル（D）を爆速実行！"
+        java -jar bin/APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
+
+    - name: 📂 [VALUE_CHANGE] 全XMLを1つのファイルに全取得・統合
+      run: |
+        echo "[ACTION] 抽出されたすべてのXMLを1つの統合ファイルにまとめます。"
+        mkdir -p web_output
+        
+        # スタートタグ
+        echo "<integrated_apk_data>" > web_output/all_in_one.xml
+        
+        # AndroidManifest.xml もそのままこの中に入れちゃうぞ！
+        if [ -f out_decompiled/AndroidManifest.xml ]; then
+          echo "  <manifest_file>" >> web_output/all_in_one.xml
+          grep -v "<?xml" out_decompiled/AndroidManifest.xml >> web_output/all_in_one.xml
+          echo "  </manifest_file>" >> web_output/all_in_one.xml
+        fi
+        
+        # res/layout 配下のUI用XMLを全取得して結合
+        find out_decompiled/res/layout/ -name "*.xml" 2>/dev/null | while read -r xml_file; do
+          FILE_NAME=$(basename "$xml_file" .xml)
+          echo "  <layout_file name=\"$FILE_NAME\">" >> web_output/all_in_one.xml
+          grep -v "<?xml" "$xml_file" >> web_output/all_in_one.xml
+          echo "  </layout_file>" >> web_output/all_in_one.xml
+        done
+        
+        # エンドタグ
+        echo "</integrated_apk_data>" >> web_output/all_in_one.xml
+        echo "[VALUE_CHANGE] すべてのXMLを web_output/all_in_one.xml に統合完了！"
+
+    - name: 🛰️ [SYSTEM] 統合XMLをリポジトリへプッシュ
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action [XML-Integrator]"
+        git add web_output/all_in_one.xml
+        git commit -m "VALUE_CHANGE: 高バージョンJavaによるXML一括統合完了 [skip ci]" || echo "変更なし"
+        git push
