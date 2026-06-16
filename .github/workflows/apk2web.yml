@@ -27,7 +27,7 @@ jobs:
         java -version
         echo "[VALUE_CHANGE] 高火力Javaエンジンの正常起動を確認しました。"
 
-    # 4. 【新兵器】リリースに添付された20MB超えのAPK/APKSを全自動でぶっこ抜く！
+    # 4. 【修正版】カカオマメ隊員指定のタグ「apks」または現在のリリースタグから確実にぶっこ抜く！
     - name: 📥 [ACTION] リソース全取得（リリースアセットのダウンロード）
       env:
         GH_TOKEN: ${{ github.token }}
@@ -35,21 +35,29 @@ jobs:
         echo "[SYSTEM] リリースに添付されたバイナリの探索を開始します。"
         mkdir -p apk_download
         
-        # GitHub CLI (gh) を使い、サーバー間超高速通信でリリースからAPK群を一括確保！
-        gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apk" --dir apk_download || true
-        gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apks" --dir apk_download || true
+        # 1. 起動トリガーとなったリリースタグ名を取得。もし空（手動ボタンポチ等）なら、隊員の「apks」をターゲットにする！
+        RELEASE_TAG="${{ github.event.release.tag_name }}"
+        if [ -z "$RELEASE_TAG" ]; then
+          RELEASE_TAG="apks"
+        fi
+        echo "[SYSTEM] ターゲットとするリリースタグ: $RELEASE_TAG"
+        
+        # 2. 指定したタグ名（apks等）を狙い撃ちして超高速ダウンロード！
+        gh release download "$RELEASE_TAG" --pattern "*.apk" --dir apk_download || true
+        gh release download "$RELEASE_TAG" --pattern "*.apks" --dir apk_download || true
         
         # ダウンロードされたファイルの存在チェック
         TARGET_FILE=$(ls apk_download/*.apk apk_download/*.apks 2>/dev/null | head -n 1)
         
         if [ -z "$TARGET_FILE" ]; then
           echo "[ERROR] 警告：対象の .apk または .apks ファイルが見つかりません！"
-          echo "[SYSTEM] 最新のリリースに対象ファイルが正しく添付されているか確認してください。"
+          echo "[SYSTEM] リリース（タグ: $RELEASE_TAG）にファイルが正しく添付されているか確認してください。"
           exit 1
         fi
         
         echo "[VALUE_CHANGE] ターゲットアセットの確保に成功：$TARGET_FILE"
         echo "TARGET_PATH=$TARGET_FILE" >> $GITHUB_ENV
+
 
     # 5. 【最適化！】トップ配置の APKEditor.jar を使って逆コンパイル実行！
     - name: 🚀 [ACTION] リポジトリトップの APKEditor.jar による逆コンパイル（XMLテキスト化）
