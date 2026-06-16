@@ -1,69 +1,101 @@
-name: Gemini Programming Team - High-Version Java APK XML Integrator
+name: Gemini Programming Team - Release & Manual APK XML Integrator
 
+# 🔥 【ここが隊員の指定ポイント！】
+# リリースの作成・編集、または画面からのボタンポチ（手動）で起動するハイブリッド仕様だ！
 on:
-  workflow_dispatch: # 手動実行用
-  push:
-    paths:
-      - 'apk/**'
+  release:
+    types: [published, edited]
+  workflow_dispatch: # これを入れるだけで、GitHub上に「ボタンポチ」の起動ボタンが出現するぞ！
 
 jobs:
   integrate-xml:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 🛰️ [ACTION] 基地のコードを展開
+    # 1. 基地（リポジトリ）のソースコードを展開
+    - name: 🛰️ [ACTION] 基地のコードを展開中...
       uses: actions/checkout@v4
 
-    # 🔥 【ここが隊員の指定ポイント！】Javaのバージョンを高めて戦闘力を最大化！
-    # GitHub Actionsで利用可能な最新鋭のJava環境をパッと構築するぞ！
-    - name: ☕ [VALUE_CHANGE] 高バージョンJava環境 (Java 21〜26系統) をインジェクション！
+    # 2. 戦闘力最大化！高バージョンJava環境を構築
+    - name: ☕ [VALUE_CHANGE] 高バージョンJava環境 (Oracle JDK 21) をインジェクション！
       uses: actions/setup-java@v4
       with:
-        distribution: 'oracle' # 最新の機能に追従しやすいOracle JDKを選択！
-        java-version: '21'     # 現在の超安定・超高速な最新LTSを指定！(環境が許せば26等の最新ビルドへ自動追従)
+        distribution: 'oracle'
+        java-version: '21'
 
-    - name: 🔍 [SYSTEM] 起動したJavaのバージョンを徹底チェック（ログ出力）
+    # 3. Javaの起動チェック
+    - name: 🔍 [SYSTEM] Javaバージョンを徹底チェック
       run: |
-        echo "[SYSTEM] 現在のシステムJavaバージョンを確認します。"
         java -version
-        echo "[VALUE_CHANGE] Javaの起動に成功。最高火力のレンダリング・デコンパイルを実行可能です！"
+        echo "[VALUE_CHANGE] 高火力Javaエンジンの正常起動を確認しました。"
 
-    - name: 🛠️ [SYSTEM] APKEditor.jar の確保
+    # 4. APKEditor.jar の爆速調達
+    - name: 🛠️ [SYSTEM] APKEditor.jar をダウンロード
       run: |
         mkdir -p bin
         curl -L -o bin/APKEditor.jar https://github.com/REAndroid/APKEditor/releases/latest/download/APKEditor.jar
+        echo "[VALUE_CHANGE] bin/APKEditor.jar の配備完了。"
 
-    - name: 🚀 [ACTION] APK/APKS 判定 ＆ 逆コンパイルでXMLテキスト化
+    # 5. 【新兵器】リリースに添付されたAPK/APKSを全自動でぶっこ抜く！
+    - name: 📥 [ACTION] リソース全取得（リリースアセットのダウンロード）
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: |
-        TARGET_FILE=$(ls apk/*.apk apk/*.apks | head -n 1)
+        echo "[SYSTEM] リリースに添付されたバイナリの探索を開始します。"
+        mkdir -p apk_download
         
-        # APKSならMコマンドで統合
-        if [[ "$TARGET_FILE" == *.apks ]]; then
-          echo "[VALUE_CHANGE] APKSを検知。マージ（M）を実行します。"
-          java -jar bin/APKEditor.jar m -i "$TARGET_FILE" -o apk/merged_output.apk
-          TARGET_FILE="apk/merged_output.apk"
+        # GitHub CLI (gh) を使って、最新のリリースアセットをフォルダーに一括ダウンロード！
+        # これにより20MB超えの巨大ファイルもGitHubサーバー間で安全に高速転送されるぞ！
+        gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apk" --dir apk_download || true
+        gh release download ${{ github.event.release.tag_name || 'latest' }} --pattern "*.apks" --dir apk_download || true
+        
+        # ダウンロードされたファイルの存在チェック
+        TARGET_FILE=$(ls apk_download/*.apk apk_download/*.apks 2>/dev/null | head -n 1)
+        
+        if [ -z "$TARGET_FILE" ]; then
+          echo "[ERROR] 警告：対象の .apk または .apks ファイルが見つかりません！"
+          echo "[SYSTEM] 手動ボタンポチの場合は、最新のリリースに対象ファイルがあるか確認してください。"
+          exit 1
         fi
         
-        # DコマンドでXMLをテキストとして復元
-        echo "[VALUE_CHANGE] 高バージョンJavaのパワーで逆コンパイル（D）を爆速実行！"
-        java -jar bin/APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
+        echo "[VALUE_CHANGE] ターゲットアセットの確保に成功：$TARGET_FILE"
+        echo "TARGET_PATH=$TARGET_FILE" >> $GITHUB_ENV
 
-    - name: 📂 [VALUE_CHANGE] 全XMLを1つのファイルに全取得・統合
+    # 6. APKEditorのD・Mコマンドを最適化実行
+    - name: 🚀 [ACTION] APKEditorによる逆コンパイル（XMLテキスト化）
       run: |
-        echo "[ACTION] 抽出されたすべてのXMLを1つの統合ファイルにまとめます。"
+        TARGET_FILE="${{ env.TARGET_PATH }}"
+        
+        # APKS（分割型）ならMコマンドで単一APKに結合
+        if [[ "$TARGET_FILE" == *.apks ]]; then
+          echo "[VALUE_CHANGE] APKSを検知。マージ作戦（M）を始動します！"
+          java -jar bin/APKEditor.jar m -i "$TARGET_FILE" -o apk_download/merged_output.apk
+          TARGET_FILE="apk_download/merged_output.apk"
+          echo "[SYSTEM] マージ完了。単一APKを生成しました。"
+        fi
+        
+        # DコマンドでバイナリXMLを完全テキスト化
+        echo "[VALUE_CHANGE] 高バージョンJavaパワーで逆コンパイル（D）を実行！"
+        java -jar bin/APKEditor.jar d -i "$TARGET_FILE" -o out_decompiled
+        echo "[SYSTEM] すべてのバイナリXMLがプレインテキストに復元されました。"
+
+    # 7. 全XMLの1ファイル一括統合処理（余計なことはしない隊員指定のピュア仕様）
+    - name: 📂 [VALUE_CHANGE] 全XMLファイルを1つに結合・ガッチャンコ
+      run: |
+        echo "[ACTION] 展開された全XMLを1本の統合ファイルにまとめます。"
         mkdir -p web_output
         
-        # スタートタグ
+        # 統合ファイルのスタートタグ
         echo "<integrated_apk_data>" > web_output/all_in_one.xml
         
-        # AndroidManifest.xml もそのままこの中に入れちゃうぞ！
+        # AndroidManifest.xmlの取り込み
         if [ -f out_decompiled/AndroidManifest.xml ]; then
           echo "  <manifest_file>" >> web_output/all_in_one.xml
           grep -v "<?xml" out_decompiled/AndroidManifest.xml >> web_output/all_in_one.xml
           echo "  </manifest_file>" >> web_output/all_in_one.xml
         fi
         
-        # res/layout 配下のUI用XMLを全取得して結合
+        # res/layout 配下のUI構成XMLをすべて検索して全取得・結合
         find out_decompiled/res/layout/ -name "*.xml" 2>/dev/null | while read -r xml_file; do
           FILE_NAME=$(basename "$xml_file" .xml)
           echo "  <layout_file name=\"$FILE_NAME\">" >> web_output/all_in_one.xml
@@ -71,14 +103,16 @@ jobs:
           echo "  </layout_file>" >> web_output/all_in_one.xml
         done
         
-        # エンドタグ
+        # 統合ファイルのエンドタグ
         echo "</integrated_apk_data>" >> web_output/all_in_one.xml
-        echo "[VALUE_CHANGE] すべてのXMLを web_output/all_in_one.xml に統合完了！"
+        echo "[VALUE_CHANGE] web_output/all_in_one.xml への一括統合が完全に完了しました！"
 
-    - name: 🛰️ [SYSTEM] 統合XMLをリポジトリへプッシュ
+    # 8. 生成された統合XML（all_in_one.xml）をGitHubリポジトリにプッシュ
+    - name: 🛰️ [SYSTEM] 統合XMLを基地（リポジトリ）へ自動コミット
       run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action [XML-Integrator]"
+        git config --local user.name "GitHub Action [XML-Integrator-Bot]"
         git add web_output/all_in_one.xml
-        git commit -m "VALUE_CHANGE: 高バージョンJavaによるXML一括統合完了 [skip ci]" || echo "変更なし"
+        git commit -m "VALUE_CHANGE: リリースアセットからXML一括統合完了 [skip ci]" || echo "変更なし"
         git push
+        echo "[SYSTEM] 作戦大成功！これにてiPad Safariからの迎撃準備が整ったぞ！"
