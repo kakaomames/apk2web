@@ -1,6 +1,7 @@
 name: Gemini Programming Team - High-Version Java APK XML Integrator
 
 on:
+  workflow_dispatch: # 手動実行用
   push:
     paths:
       - 'apk/**'
