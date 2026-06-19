@@ -6,6 +6,22 @@ on:
   workflow_dispatch:
 
 jobs:
+  cleanup-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge Old Artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 現在のリポジトリの Artifact ID を全取得して削除
+          echo ">> Starting cleanup..."
+          # 権限がない場合は失敗する可能性があるため || true で制御
+          ARTIFACTS=$(gh api repos/:owner/:repo/actions/artifacts -q '.artifacts[].id')
+          for id in $ARTIFACTS; do
+            echo "Deleting artifact $id..."
+            gh api repos/:owner/:repo/actions/artifacts/$id -X DELETE
+          done
+          echo ">> Cleanup complete!"
   # 1. マージ部隊：APKSを1つのAPKに統合して保存
   merge-apk:
     runs-on: ubuntu-24.04-arm
