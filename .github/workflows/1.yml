@@ -60,6 +60,7 @@ jobs:
         with:
           name: merged-apk
           path: output/*.apk
+          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
 
   # 2. Native部隊：ライブラリ解析（WASM変換の下準備）
   analyze-native:
@@ -84,6 +85,7 @@ jobs:
         with:
           name: native-report
           path: native_report.txt
+          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
 
   # 3. Resource部隊：XML -> HTML/CSS (抽出)
   extract-resources:
@@ -111,6 +113,7 @@ jobs:
         with:
           name: resources
           path: decoded_*
+          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
 
   # 4. Logic部隊：DEX -> JS (解析)
   decompile-logic:
@@ -129,6 +132,7 @@ jobs:
         with:
           name: logic-report
           path: logic_report.txt
+          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
 
   # 5. 集約部隊：結果をリポジトリに同期
   sync-to-repo:
