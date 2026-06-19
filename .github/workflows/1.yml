@@ -1,0 +1,110 @@
+name: APK2Web Pipeline
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  # 1. マージ部隊：APKSを1つのAPKに統合して保存
+  merge-apk:
+    runs-on: ubuntu-24.04-arm
+    outputs:
+      artifact-name: merged-apk
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java & Environment
+        run: |
+          sudo apt-get update && sudo apt-get install -y openjdk-17-jre-headless
+          curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
+      - name: Merge APKs
+        run: |
+          mkdir -p output
+          # assets/*.apks をマージする前提
+          for file in assets/*.apks; do
+            [ -e "$file" ] || continue
+            java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
+          done
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-apk
+          path: output/
+
+  # 2. Native部隊：ライブラリ解析（WASM変換の下準備）
+  analyze-native:
+    needs: merge-apk
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: merged-apk
+      - name: Analyze .so files
+        run: |
+          mkdir -p extracted
+          for apk in *.apk; do
+            unzip -q "$apk" -d "extracted/$apk"
+            echo "--- Report for $apk ---" >> native_report.txt
+            find "extracted/$apk" -name "*.so" | while read -r so; do
+              echo "FILE: $so" >> native_report.txt
+              nm -D "$so" >> native_report.txt 2>/dev/null
+            done
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-report
+          path: native_report.txt
+
+  # 3. Resource部隊：XML -> HTML/CSS (抽出)
+  extract-resources:
+    needs: merge-apk
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: merged-apk
+      - name: Extract Resources
+        run: |
+          sudo apt-get install -y apktool
+          for apk in *.apk; do
+            apktool d "$apk" -o "res_out_$apk"
+            # ここにXMLをHTMLに変換する自作スクリプト等を配置
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resources
+          path: res_out_*
+
+  # 4. Logic部隊：DEX -> JS (解析)
+  decompile-logic:
+    needs: merge-apk
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: merged-apk
+      - name: Decompile DEX
+        run: |
+          # 簡易的にdexdump等で解析、またはJADXを使用
+          echo "Starting logic analysis..." > logic_report.txt
+          # ここに解析コマンドを順次追加
+      - uses: actions/upload-artifact@v4
+        with:
+          name: logic-report
+          path: logic_report.txt
+
+  # 5. 集約部隊：結果をリポジトリに同期
+  sync-to-repo:
+    needs: [analyze-native, extract-resources, decompile-logic]
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - name: Commit Reports
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [XML-Integrator-Bot]"
+          cp */*.txt . || true
+          git add *.txt
+          git commit -m "Update Analysis Reports" || true
+          git push || true
