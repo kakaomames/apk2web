@@ -49,44 +49,53 @@ jobs:
             exit 1
           fi
 
-      - name: Extract and Analyze .so
+      - name: Extract and Analyze .so (Debug Mode)
         run: |
           mkdir -p extracted
+          touch analysis_report.txt  # 最初に空ファイルを作成しておく
           THRESHOLD=102400
+          
+          echo "--- Current directory contents ---"
+          ls -R assets/ || echo "Warning: assets/ directory not found!"
           
           # assets 配下の全ファイルを処理
           for file in assets/*; do
             [ -f "$file" ] || continue
             
-            # .apks かどうかを判定
+            file_size=$(wc -c < "$file")
+            echo "Checking: $file (Size: $file_size bytes)"
+            
+            # サイズチェック
+            if [ "$file_size" -lt "$THRESHOLD" ]; then
+              echo "  -> Skipped (Too small)"
+              continue
+            fi
+            
+            echo "  -> Processing!"
             base_name=$(basename "$file")
             target_apk="$file"
             
-            # .apks なら変換処理へ
+            # .apks マージ処理
             if [[ "$base_name" == *.apks ]]; then
-              echo ">> Merging APKS: $base_name"
-              # マージ後の出力先を一時フォルダにする
+              echo "  -> Merging APKS..."
               java -jar APKEditor.jar m -i "$file" -o "merged_$base_name.apk"
               target_apk="merged_$base_name.apk"
             fi
             
-            # サイズチェック（結合後のAPKもチェック対象とする）
-            file_size=$(wc -c < "$target_apk")
-            [ "$file_size" -lt "$THRESHOLD" ] && continue
-            
-            echo "--- Processing: $target_apk ---"
             target_dir="extracted/$base_name"
             mkdir -p "$target_dir"
             
-            # 解凍
+            echo "  -> Unzipping $target_apk..."
             unzip -q "$target_apk" -d "$target_dir"
             
-            # 解析
-            echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
+            echo "  -> Searching for .so files..."
             find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
             
             echo "--- Completed: $base_name ---"
           done
+          
+          echo "--- Final Artifact Check ---"
+          ls -l analysis_report.txt
       
 
       - name: Upload Analysis Result
