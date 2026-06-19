@@ -18,15 +18,25 @@ jobs:
           sudo apt-get install -y binutils unzip emscripten make
           # Emscriptenの環境設定が必要な場合はここで調整する
 
-      - name: Download APK from Latest Release
+      - name: Download Artifacts (Debug & Robust)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p assets
-          # リリースのタグを取得してAPKを回収
-          LATEST_TAG=$(gh release view --json tagName -q .tagName)
-          echo "Downloading from tag: $LATEST_TAG"
-          gh release download "$LATEST_TAG" --pattern "*.apk" --dir ./assets/
+          
+          # 1. どのタグを取得しているか再確認
+          LATEST_TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName')
+          echo "Target Release Tag: $LATEST_TAG"
+          
+          # 2. 実際にダウンロードする前に、何が見えているか確認（デバッグ用）
+          echo "--- Files available in release ---"
+          gh release view "$LATEST_TAG" --json assets -q '.assets[].name'
+          
+          # 3. 確実に全ファイルを回収する（-p でパターン指定、--clobber で上書き許可）
+          echo "--- Starting Download ---"
+          gh release download "$LATEST_TAG" --pattern "*" --dir ./assets/ --clobber -v
+          
+          echo "--- Downloaded files ---"
           ls -lh assets/
 
       - name: Install Dependencies & Download Tool
