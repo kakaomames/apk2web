@@ -100,33 +100,62 @@ jobs:
           path: native_report.txt
           retention-days: 1  # 👈 これを全ジョブに入れてくれ！
 
-  # 3. Resource部隊：XML -> HTML/CSS (抽出)
+  # 3. Resource部隊：XML -> HTML/CSS抽出用の前処理
   extract-resources:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
-      # 💡 ここが重要！JARがないなら、その場で調達する！
+
       - name: Prepare APKEditor
         run: |
           curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
-          
-      - name: Extract Resources with APKEditor
+
+      - name: Extract & Index Resources
         run: |
-          # APKEditor.jar は既にダウンロード済みとするか、再度取得する
-          # merged_*.apk に対して d コマンドを実行
+          mkdir -p decoded
+          
+          # 1. 各APKを展開してアプリごとのディレクトリに格納
           for apk in merged_*.apk; do
             [ -e "$apk" ] || continue
-            echo ">> Decoding $apk with APKEditor..."
-            java -jar APKEditor.jar d -i "$apk" -o "decoded_$(basename "$apk" .apk)"
+            
+            # ファイル名からアプリ名を抽出（例: merged_pokemon.apk -> pokemon）
+            APP_NAME=$(echo "$apk" | sed -e 's/merged_//' -e 's/\.apk//')
+            OUT_DIR="decoded/$APP_NAME"
+            
+            echo ">> Decoding $apk to $OUT_DIR..."
+            java -jar APKEditor.jar d -i "$apk" -o "$OUT_DIR"
           done
+          
+          # 2. Pythonでインデックス(JSON)を生成
+          echo ">> Generating index.json..."
+          python3 -c "
+          import json, os, glob
+          
+          # 存在するアプリディレクトリをスキャン
+          apps = [d for d in os.listdir('decoded') if os.path.isdir(os.path.join('decoded', d))]
+          index = {'apps': {}}
+
+          for app in apps:
+              # 各アプリのレイアウトファイルを列挙
+              layout_path = os.path.join('decoded', app, 'res', 'layout', '*.xml')
+              files = glob.glob(layout_path)
+              index['apps'][app] = [os.path.basename(f) for f in files]
+              
+          with open('decoded/index.json', 'w') as f:
+              json.dump(index, f, indent=2)
+          "
+          echo "[ACTION] リソース抽出とJSON目録作成が完了しました！"
+
       - uses: actions/upload-artifact@v4
         with:
           name: resources
-          path: decoded_*
-          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
+          path: decoded/
+          retention-days: 1
 
   # 4. Logic部隊：DEX -> JS (解析)
   decompile-logic:
