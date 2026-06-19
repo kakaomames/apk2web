@@ -77,17 +77,19 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
-      - name: Extract Resources
+      - name: Extract Resources with APKEditor
         run: |
-          sudo apt-get install -y apktool
-          for apk in *.apk; do
-            apktool d "$apk" -o "res_out_$apk"
-            # ここにXMLをHTMLに変換する自作スクリプト等を配置
+          # APKEditor.jar は既にダウンロード済みとするか、再度取得する
+          # merged_*.apk に対して d コマンドを実行
+          for apk in merged_*.apk; do
+            [ -e "$apk" ] || continue
+            echo ">> Decoding $apk with APKEditor..."
+            java -jar APKEditor.jar d -i "$apk" -o "decoded_$(basename "$apk" .apk)"
           done
       - uses: actions/upload-artifact@v4
         with:
           name: resources
-          path: res_out_*
+          path: decoded_*
 
   # 4. Logic部隊：DEX -> JS (解析)
   decompile-logic:
