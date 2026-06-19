@@ -29,47 +29,65 @@ jobs:
           gh release download "$LATEST_TAG" --pattern "*.apk" --dir ./assets/
           ls -lh assets/
 
-      - name: Install Dependencies & Java
+      - name: Install Dependencies & Download Tool
         run: |
           sudo apt-get update
           sudo apt-get install -y binutils unzip openjdk-17-jre-headless
-          # APKEditor.jar を取得（GitHub Release等から持ってくる想定）
-          # 必要に応じて適宜 URL を修正してくれ
-          curl -L "https://github.com/REAndroid/APKEditor/releases/latest/download/APKEditor.jar" -o APKEditor.jar
+          
+          # 隊員が発見した正確な座標を使用する！
+          APKEDITOR_URL="https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar"
+          
+          echo "Procuring APKEditor from: $APKEDITOR_URL"
+          curl -f -L "$APKEDITOR_URL" -o APKEditor.jar
+          
+          # ファイル確認
+          if [ -s APKEditor.jar ]; then
+            echo "Successfully procured APKEditor.jar"
+            ls -lh APKEditor.jar
+          else
+            echo "::error:: Failed to download APKEditor.jar!"
+            exit 1
+          fi
 
       - name: Extract and Analyze .so
         run: |
           mkdir -p extracted
           THRESHOLD=102400
           
+          # assets 配下の全ファイルを処理
           for file in assets/*; do
             [ -f "$file" ] || continue
-            file_size=$(wc -c < "$file")
-            [ "$file_size" -lt "$THRESHOLD" ] && continue
             
+            # .apks かどうかを判定
             base_name=$(basename "$file")
             target_apk="$file"
-
-            # もし .apks ならマージして .apk に変換
+            
+            # .apks なら変換処理へ
             if [[ "$base_name" == *.apks ]]; then
               echo ">> Merging APKS: $base_name"
+              # マージ後の出力先を一時フォルダにする
               java -jar APKEditor.jar m -i "$file" -o "merged_$base_name.apk"
               target_apk="merged_$base_name.apk"
-              base_name="merged_$base_name.apk"
             fi
             
-            echo "--- Processing: $base_name ---"
+            # サイズチェック（結合後のAPKもチェック対象とする）
+            file_size=$(wc -c < "$target_apk")
+            [ "$file_size" -lt "$THRESHOLD" ] && continue
+            
+            echo "--- Processing: $target_apk ---"
             target_dir="extracted/$base_name"
             mkdir -p "$target_dir"
             
-            # 結合された（または元々の）APKを解凍
-            unzip -q "$target_apk" -d "$target_dir" || echo "Warning: Failed to unzip $target_apk"
+            # 解凍
+            unzip -q "$target_apk" -d "$target_dir"
             
+            # 解析
             echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
             find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
             
             echo "--- Completed: $base_name ---"
           done
+      
 
       - name: Upload Analysis Result
         uses: actions/upload-artifact@v4
