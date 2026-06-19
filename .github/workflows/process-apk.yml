@@ -98,6 +98,10 @@ jobs:
           
           echo "--- Final Artifact Check ---"
           ls -l analysis_report.txt
+          
+          git add .
+          git comit "aa"
+          git push
       
 
       - name: Upload Analysis Result
