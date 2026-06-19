@@ -8,6 +8,8 @@ on:
 jobs:
   cleanup-artifacts:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Purge Old Artifacts
         env:
@@ -25,6 +27,8 @@ jobs:
   # 1. マージ部隊：APKSを1つのAPKに統合して保存
   merge-apk:
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
@@ -119,6 +123,8 @@ jobs:
   decompile-logic:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -138,6 +144,8 @@ jobs:
   sync-to-repo:
     needs: [analyze-native, extract-resources, decompile-logic]
     runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
