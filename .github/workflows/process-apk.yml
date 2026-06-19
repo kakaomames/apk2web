@@ -1,0 +1,49 @@
+name: Native ARM64 APK Processing
+
+on:
+  release:
+    types: [published] # リリースが公開されたら自動起動
+  workflow_dispatch:   # 手動起動も可能にする
+
+jobs:
+  analyze_and_build:
+    runs-on: ubuntu-24.04-arm # ここが最大のポイントだ！
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils unzip emscripten make
+          # Emscriptenの環境設定が必要な場合はここで調整する
+
+      - name: Download APK from Latest Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p assets
+          # リリースのタグを取得してAPKを回収
+          LATEST_TAG=$(gh release view --json tagName -q .tagName)
+          echo "Downloading from tag: $LATEST_TAG"
+          gh release download "$LATEST_TAG" --pattern "*.apk" --dir ./assets/
+          ls -lh assets/
+
+      - name: Extract and Analyze .so
+        run: |
+          mkdir -p extracted
+          unzip assets/*.apk -d ./extracted
+          echo "--- Symbol Analysis Report ---" > analysis_report.txt
+          # ARM64ネイティブ環境で解析を実行！
+          find ./extracted -name "*.so" -exec nm -D {} \; >> analysis_report.txt
+          echo "解析完了！"
+
+      - name: Upload Analysis Result
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-analysis-report
+          path: analysis_report.txt
+
+      # 今後、ここに WASM 変換用の make コマンドを追加していく
+      # - name: Build WASM
+      #   run: emcc src/game_logic.c -o build/game.wasm
