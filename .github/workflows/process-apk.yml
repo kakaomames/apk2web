@@ -33,24 +33,28 @@ jobs:
         run: |
           mkdir -p extracted
           
-          # assets 配下の全ファイルをループ処理する
+          # 100KB (102400 bytes) 未満のファイルは除外する
+          THRESHOLD=102400
+          
           for file in assets/*; do
-            # ファイルかチェック
             [ -f "$file" ] || continue
             
-            # ファイル名を取得
-            base_name=$(basename "$file")
-            echo "--- Processing: $base_name ---"
+            # ファイルサイズのチェック
+            file_size=$(wc -c < "$file")
             
-            # 衝突を防ぐために、ファイル名ごとの専用ディレクトリを作成
+            if [ "$file_size" -lt "$THRESHOLD" ]; then
+              echo "--- Skipping $file (Size: $file_size bytes < $THRESHOLD) ---"
+              continue
+            fi
+            
+            base_name=$(basename "$file")
+            echo "--- Processing: $base_name (Size: $file_size bytes) ---"
+            
             target_dir="extracted/$base_name"
             mkdir -p "$target_dir"
             
-            # unzip で解凍（-q でログを静かにする）
-            # .apks は内部的にZIPなので unzip でそのまま解凍可能だ
             unzip -q "$file" -d "$target_dir" || echo "Warning: Failed to unzip $file, skipping..."
             
-            # 解析実行：そのディレクトリ内の .so だけを nm にかける
             echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
             find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
             
