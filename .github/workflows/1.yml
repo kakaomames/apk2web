@@ -77,6 +77,11 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
+      # 💡 ここが重要！JARがないなら、その場で調達する！
+      - name: Prepare APKEditor
+        run: |
+          curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
+          
       - name: Extract Resources with APKEditor
         run: |
           # APKEditor.jar は既にダウンロード済みとするか、再度取得する
