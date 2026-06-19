@@ -1,0 +1,114 @@
+name: APKEditor.jar 楽しいい
+
+on:
+  release:
+    types: [published] # リリースが公開されたら自動起動
+  workflow_dispatch:   # 手動起動も可能にする
+
+jobs:
+  analyze_and_build:
+    runs-on: ubuntu-24.04-arm # ここが最大のポイントだ！
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils unzip emscripten make
+          # Emscriptenの環境設定が必要な場合はここで調整する
+
+      - name: Download Artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p assets
+          
+          # タグの指定は前回成功した "$LATEST_TAG" でOKだ
+          # -v を削除して実行する！
+          gh release download "$LATEST_TAG" --pattern "*" --dir ./assets/ --clobber
+          
+          echo "--- Downloaded files ---"
+          ls -lh assets/
+
+      - name: Install Dependencies & Download Tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils unzip openjdk-17-jre-headless
+      
+
+      - name: Extract and Analyze .so
+        run: |
+          mkdir -p extracted
+          THRESHOLD=102400
+          
+          # 1. APKEditorの存在確認（なければダウンロード）
+          if [ -f "APKEditor.jar" ]; then
+            echo ">> APKEditor.jar already exists in root. Skipping download."
+          else
+            echo ">> APKEditor.jar not found. Downloading..."
+            curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
+          fi
+
+          for file in assets/*; do
+            [ -f "$file" ] || continue
+            base_name=$(basename "$file")
+            target_dir="extracted/$base_name"
+
+            # 2. 既に抽出済みならスキップ（ここが最大の時短ポイント！）
+            if [ -d "$target_dir" ] && [ "$(ls -A "$target_dir")" ]; then
+              echo ">> Already processed: $base_name. Skipping."
+              continue
+            fi
+            
+            # 以下、新規ファイルのみ処理
+            file_size=$(wc -c < "$file")
+            [ "$file_size" -lt "$THRESHOLD" ] && continue
+            
+            target_apk="$file"
+            
+            # .apks マージ処理
+            if [[ "$base_name" == *.apks ]]; then
+              merged_file="merged_$base_name.apk"
+              # マージ済みファイルが既にあれば再利用、なければ作成
+              if [ ! -f "$merged_file" ]; then
+                echo ">> Merging APKS: $base_name"
+                java -jar APKEditor.jar m -i "$file" -o "$merged_file" > log.txt
+              fi
+              target_apk="$merged_file"
+            fi
+            
+            echo "--- Processing: $target_apk ---"
+            mkdir -p "$target_dir"
+            
+            echo ">> Unzipping..."
+            unzip -q "$target_apk" -d "$target_dir"
+            
+            echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
+            find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
+            
+            # 3. マージしたAPKは終わったら消す（ディスク節約）
+            if [[ "$base_name" == *.apks ]]; then
+              rm "$merged_file"
+            fi
+            
+            echo "--- Completed: $base_name ---"
+          done
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [XML-Integrator-Bot]"
+          git add ./*/*.apks
+          git add log.txt
+          git add analysis_report.txt
+          git commit -m "aa" || true
+          git push || true
+      
+
+      - name: Upload Analysis Result
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-analysis-report
+          path: analysis_report.txt
+
+      # 今後、ここに WASM 変換用の make コマンドを追加していく
+      # - name: Build WASM
+      #   run: emcc src/game_logic.c -o build/game.wasm
