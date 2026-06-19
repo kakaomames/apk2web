@@ -29,31 +29,41 @@ jobs:
           gh release download "$LATEST_TAG" --pattern "*.apk" --dir ./assets/
           ls -lh assets/
 
+      - name: Install Dependencies & Java
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binutils unzip openjdk-17-jre-headless
+          # APKEditor.jar を取得（GitHub Release等から持ってくる想定）
+          # 必要に応じて適宜 URL を修正してくれ
+          curl -L "https://github.com/REAndroid/APKEditor/releases/latest/download/APKEditor.jar" -o APKEditor.jar
+
       - name: Extract and Analyze .so
         run: |
           mkdir -p extracted
-          
-          # 100KB (102400 bytes) 未満のファイルは除外する
           THRESHOLD=102400
           
           for file in assets/*; do
             [ -f "$file" ] || continue
-            
-            # ファイルサイズのチェック
             file_size=$(wc -c < "$file")
-            
-            if [ "$file_size" -lt "$THRESHOLD" ]; then
-              echo "--- Skipping $file (Size: $file_size bytes < $THRESHOLD) ---"
-              continue
-            fi
+            [ "$file_size" -lt "$THRESHOLD" ] && continue
             
             base_name=$(basename "$file")
-            echo "--- Processing: $base_name (Size: $file_size bytes) ---"
+            target_apk="$file"
+
+            # もし .apks ならマージして .apk に変換
+            if [[ "$base_name" == *.apks ]]; then
+              echo ">> Merging APKS: $base_name"
+              java -jar APKEditor.jar m -i "$file" -o "merged_$base_name.apk"
+              target_apk="merged_$base_name.apk"
+              base_name="merged_$base_name.apk"
+            fi
             
+            echo "--- Processing: $base_name ---"
             target_dir="extracted/$base_name"
             mkdir -p "$target_dir"
             
-            unzip -q "$file" -d "$target_dir" || echo "Warning: Failed to unzip $file, skipping..."
+            # 結合された（または元々の）APKを解凍
+            unzip -q "$target_apk" -d "$target_dir" || echo "Warning: Failed to unzip $target_apk"
             
             echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
             find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
