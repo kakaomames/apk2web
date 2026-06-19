@@ -98,7 +98,8 @@ jobs:
           
           echo "--- Final Artifact Check ---"
           ls -l analysis_report.txt
-          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [XML-Integrator-Bot]"
           git add .
           git commit "aa" || true
           git push || true
