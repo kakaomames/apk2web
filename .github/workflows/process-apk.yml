@@ -32,11 +32,30 @@ jobs:
       - name: Extract and Analyze .so
         run: |
           mkdir -p extracted
-          unzip assets/*.apk -d ./extracted
-          echo "--- Symbol Analysis Report ---" > analysis_report.txt
-          # ARM64ネイティブ環境で解析を実行！
-          find ./extracted -name "*.so" -exec nm -D {} \; >> analysis_report.txt
-          echo "解析完了！"
+          
+          # assets 配下の全ファイルをループ処理する
+          for file in assets/*; do
+            # ファイルかチェック
+            [ -f "$file" ] || continue
+            
+            # ファイル名を取得
+            base_name=$(basename "$file")
+            echo "--- Processing: $base_name ---"
+            
+            # 衝突を防ぐために、ファイル名ごとの専用ディレクトリを作成
+            target_dir="extracted/$base_name"
+            mkdir -p "$target_dir"
+            
+            # unzip で解凍（-q でログを静かにする）
+            # .apks は内部的にZIPなので unzip でそのまま解凍可能だ
+            unzip -q "$file" -d "$target_dir" || echo "Warning: Failed to unzip $file, skipping..."
+            
+            # 解析実行：そのディレクトリ内の .so だけを nm にかける
+            echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
+            find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
+            
+            echo "--- Completed: $base_name ---"
+          done
 
       - name: Upload Analysis Result
         uses: actions/upload-artifact@v4
