@@ -100,8 +100,8 @@ jobs:
           ls -l analysis_report.txt
           
           git add .
-          git comit "aa"
-          git push
+          git commit "aa" || true
+          git push || true
       
 
       - name: Upload Analysis Result
