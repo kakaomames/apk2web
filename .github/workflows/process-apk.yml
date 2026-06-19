@@ -51,57 +51,67 @@ jobs:
             exit 1
           fi
 
-      - name: Extract and Analyze .so (Debug Mode)
+      - name: Extract and Analyze .so
         run: |
           mkdir -p extracted
-          touch analysis_report.txt  # 最初に空ファイルを作成しておく
           THRESHOLD=102400
           
-          echo "--- Current directory contents ---"
-          ls -R assets/ || echo "Warning: assets/ directory not found!"
-          
-          # assets 配下の全ファイルを処理
+          # 1. APKEditorの存在確認（なければダウンロード）
+          if [ -f "APKEditor.jar" ]; then
+            echo ">> APKEditor.jar already exists in root. Skipping download."
+          else
+            echo ">> APKEditor.jar not found. Downloading..."
+            curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
+          fi
+
           for file in assets/*; do
             [ -f "$file" ] || continue
-            
-            file_size=$(wc -c < "$file")
-            echo "Checking: $file (Size: $file_size bytes)"
-            
-            # サイズチェック
-            if [ "$file_size" -lt "$THRESHOLD" ]; then
-              echo "  -> Skipped (Too small)"
+            base_name=$(basename "$file")
+            target_dir="extracted/$base_name"
+
+            # 2. 既に抽出済みならスキップ（ここが最大の時短ポイント！）
+            if [ -d "$target_dir" ] && [ "$(ls -A "$target_dir")" ]; then
+              echo ">> Already processed: $base_name. Skipping."
               continue
             fi
             
-            echo "  -> Processing!"
-            base_name=$(basename "$file")
+            # 以下、新規ファイルのみ処理
+            file_size=$(wc -c < "$file")
+            [ "$file_size" -lt "$THRESHOLD" ] && continue
+            
             target_apk="$file"
             
             # .apks マージ処理
             if [[ "$base_name" == *.apks ]]; then
-              echo "  -> Merging APKS..."
-              java -jar APKEditor.jar m -i "$file" -o "merged_$base_name.apk"
-              target_apk="merged_$base_name.apk"
+              merged_file="merged_$base_name.apk"
+              # マージ済みファイルが既にあれば再利用、なければ作成
+              if [ ! -f "$merged_file" ]; then
+                echo ">> Merging APKS: $base_name"
+                java -jar APKEditor.jar m -i "$file" -o "$merged_file"
+              fi
+              target_apk="$merged_file"
             fi
             
-            target_dir="extracted/$base_name"
+            echo "--- Processing: $target_apk ---"
             mkdir -p "$target_dir"
             
-            echo "  -> Unzipping $target_apk..."
+            echo ">> Unzipping..."
             unzip -q "$target_apk" -d "$target_dir"
             
-            echo "  -> Searching for .so files..."
+            echo ">> Analyzing symbols in $base_name" >> analysis_report.txt
             find "$target_dir" -name "*.so" -exec nm -D {} \; >> analysis_report.txt 2>/dev/null
+            
+            # 3. マージしたAPKは終わったら消す（ディスク節約）
+            if [[ "$base_name" == *.apks ]]; then
+              rm "$merged_file"
+            fi
             
             echo "--- Completed: $base_name ---"
           done
-          
-          echo "--- Final Artifact Check ---"
-          ls -l analysis_report.txt
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [XML-Integrator-Bot]"
           git add .
-          git commit "aa" || true
+          git commit -m "aa" || true
           git push || true
       
 
