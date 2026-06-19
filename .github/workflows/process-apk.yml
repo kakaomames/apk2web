@@ -50,6 +50,12 @@ jobs:
             echo "::error:: Failed to download APKEditor.jar!"
             exit 1
           fi
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [XML-Integrator-Bot]"
+          git add ./*/*.apks
+          git add analysis_report.txt
+          git commit -m "aa" || true
+          git push || true
 
       - name: Extract and Analyze .so
         run: |
@@ -110,7 +116,8 @@ jobs:
           done
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [XML-Integrator-Bot]"
-          git add .
+          git add ./*/*.apks
+          git add analysis_report.txt
           git commit -m "aa" || true
           git push || true
       
