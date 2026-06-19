@@ -9,27 +9,41 @@ jobs:
   # 1. マージ部隊：APKSを1つのAPKに統合して保存
   merge-apk:
     runs-on: ubuntu-24.04-arm
-    outputs:
-      artifact-name: merged-apk
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Java & Environment
+      
+      # 1. 原料（.apks）をダウンロード
+      - name: Download .apks from Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sudo apt-get update && sudo apt-get install -y openjdk-17-jre-headless
+          mkdir -p assets
+          # 最新のリリースタグから .apks を取得
+          gh release download "$LATEST_TAG" --pattern "*.apks" --dir ./assets/ --clobber
+
+      # 2. マージ実行（APKEditor）
+      - name: Setup & Merge
+        run: |
+          # ツール準備
           curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
-      - name: Merge APKs
-        run: |
           mkdir -p output
-          # assets/*.apks をマージする前提
+          
+          # マージ実行
           for file in assets/*.apks; do
-            [ -e "$file" ] || continue
-            java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
+             [ -e "$file" ] || continue
+             echo ">> Merging $file ..."
+             java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
           done
-      - name: Upload Artifact
+          
+          # デバッグ：本当にファイルができたか確認！
+          ls -lh output/
+
+      # 3. 完成品（.apk）を次の部隊へ転送
+      - name: Upload Merged APK
         uses: actions/upload-artifact@v4
         with:
           name: merged-apk
-          path: output/
+          path: output/*.apk
 
   # 2. Native部隊：ライブラリ解析（WASM変換の下準備）
   analyze-native:
