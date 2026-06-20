@@ -1,0 +1,6 @@
+axolotl
+banner
+illager
+iron_golem
+parrot
+wither_boss

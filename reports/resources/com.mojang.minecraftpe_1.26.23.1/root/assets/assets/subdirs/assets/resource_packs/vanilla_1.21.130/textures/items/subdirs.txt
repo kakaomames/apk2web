@@ -1,0 +1,3 @@
+nautilus_armor
+spawn_eggs
+spear

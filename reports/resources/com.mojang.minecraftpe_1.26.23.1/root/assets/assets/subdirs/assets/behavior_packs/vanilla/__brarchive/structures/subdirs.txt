@@ -1,0 +1,4 @@
+ancient_city
+bastion
+trail_ruins
+village

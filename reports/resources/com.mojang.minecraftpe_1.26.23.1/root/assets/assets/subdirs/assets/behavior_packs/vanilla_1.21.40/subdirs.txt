@@ -1,0 +1,9 @@
+entities
+features
+items
+item_catalog
+loot_tables
+recipes
+spawn_rules
+trading
+__brarchive

@@ -1,0 +1,8 @@
+entities
+features
+feature_rules
+items
+item_catalog
+loot_tables
+recipes
+__brarchive

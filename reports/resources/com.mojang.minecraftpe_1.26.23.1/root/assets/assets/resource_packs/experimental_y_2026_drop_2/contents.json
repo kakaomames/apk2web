@@ -1,0 +1,286 @@
+{
+    "content": [
+        {
+            "path": "blocks.json"
+        },
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "sounds.json"
+        },
+        {
+            "path": "biomes/sulfur_caves.client_biome.json"
+        },
+        {
+            "path": "entity/sulfur_cube.entity.json"
+        },
+        {
+            "path": "models/entity/sulfur_cube.geo.json"
+        },
+        {
+            "path": "particles/noxious_gas_particle.json"
+        },
+        {
+            "path": "particles/sulfur_bubble_particle.json"
+        },
+        {
+            "path": "particles/sulfur_cube_particle.json"
+        },
+        {
+            "path": "render_controllers/sulfur_cube.render_controllers.json"
+        },
+        {
+            "path": "sounds/sound_definitions.json"
+        },
+        {
+            "path": "texts/bg_BG.lang"
+        },
+        {
+            "path": "texts/cs_CZ.lang"
+        },
+        {
+            "path": "texts/da_DK.lang"
+        },
+        {
+            "path": "texts/de_DE.lang"
+        },
+        {
+            "path": "texts/el_GR.lang"
+        },
+        {
+            "path": "texts/en_GB.lang"
+        },
+        {
+            "path": "texts/en_US.lang"
+        },
+        {
+            "path": "texts/es_ES.lang"
+        },
+        {
+            "path": "texts/es_MX.lang"
+        },
+        {
+            "path": "texts/fi_FI.lang"
+        },
+        {
+            "path": "texts/fr_CA.lang"
+        },
+        {
+            "path": "texts/fr_FR.lang"
+        },
+        {
+            "path": "texts/hu_HU.lang"
+        },
+        {
+            "path": "texts/id_ID.lang"
+        },
+        {
+            "path": "texts/it_IT.lang"
+        },
+        {
+            "path": "texts/ja_JP.lang"
+        },
+        {
+            "path": "texts/ko_KR.lang"
+        },
+        {
+            "path": "texts/nb_NO.lang"
+        },
+        {
+            "path": "texts/nl_NL.lang"
+        },
+        {
+            "path": "texts/pl_PL.lang"
+        },
+        {
+            "path": "texts/pt_BR.lang"
+        },
+        {
+            "path": "texts/pt_PT.lang"
+        },
+        {
+            "path": "texts/ru_RU.lang"
+        },
+        {
+            "path": "texts/sk_SK.lang"
+        },
+        {
+            "path": "texts/sv_SE.lang"
+        },
+        {
+            "path": "texts/tr_TR.lang"
+        },
+        {
+            "path": "texts/uk_UA.lang"
+        },
+        {
+            "path": "texts/zh_CN.lang"
+        },
+        {
+            "path": "texts/zh_TW.lang"
+        },
+        {
+            "path": "textures/item_texture.json"
+        },
+        {
+            "path": "textures/terrain_texture.json"
+        },
+        {
+            "path": "textures/texture_list.json"
+        },
+        {
+            "path": "textures/blocks/chiseled_cinnabar.png"
+        },
+        {
+            "path": "textures/blocks/chiseled_cinnabar.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/chiseled_cinnabar_mers.tga"
+        },
+        {
+            "path": "textures/blocks/chiseled_sulfur.png"
+        },
+        {
+            "path": "textures/blocks/chiseled_sulfur.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/chiseled_sulfur_mers.tga"
+        },
+        {
+            "path": "textures/blocks/cinnabar.png"
+        },
+        {
+            "path": "textures/blocks/cinnabar.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/cinnabar_bricks.png"
+        },
+        {
+            "path": "textures/blocks/cinnabar_bricks.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/cinnabar_bricks_mers.tga"
+        },
+        {
+            "path": "textures/blocks/cinnabar_mers.tga"
+        },
+        {
+            "path": "textures/blocks/polished_cinnabar.png"
+        },
+        {
+            "path": "textures/blocks/polished_cinnabar.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/polished_cinnabar_mers.tga"
+        },
+        {
+            "path": "textures/blocks/polished_sulfur.png"
+        },
+        {
+            "path": "textures/blocks/polished_sulfur.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/polished_sulfur_mers.tga"
+        },
+        {
+            "path": "textures/blocks/potent_sulfur.png"
+        },
+        {
+            "path": "textures/blocks/potent_sulfur.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/potent_sulfur_mers.tga"
+        },
+        {
+            "path": "textures/blocks/sulfur.png"
+        },
+        {
+            "path": "textures/blocks/sulfur.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/sulfur_bricks.png"
+        },
+        {
+            "path": "textures/blocks/sulfur_bricks.texture_set.json"
+        },
+        {
+            "path": "textures/blocks/sulfur_bricks_mers.tga"
+        },
+        {
+            "path": "textures/blocks/sulfur_mers.tga"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_baby.png"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_baby.texture_set.json"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_inner.png"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_inner.texture_set.json"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_inner_mers.tga"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_outer.png"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_outer.texture_set.json"
+        },
+        {
+            "path": "textures/entity/sulfur_cube/sulfur_cube_outer_mers.tga"
+        },
+        {
+            "path": "textures/items/bucket_sulfur_cube.png"
+        },
+        {
+            "path": "textures/items/bucket_sulfur_cube.texture_set.json"
+        },
+        {
+            "path": "textures/items/bucket_sulfur_cube_mers.tga"
+        },
+        {
+            "path": "textures/items/spawn_eggs/sulfur_cube_spawn_egg.png"
+        },
+        {
+            "path": "textures/items/spawn_eggs/sulfur_cube_spawn_egg.texture_set.json"
+        },
+        {
+            "path": "textures/items/spawn_eggs/sulfur_cube_spawn_egg_mers.tga"
+        },
+        {
+            "path": "textures/particle/bubble_white.png"
+        },
+        {
+            "path": "textures/particle/bubble_white.texture_set.json"
+        },
+        {
+            "path": "textures/particle/bubble_white_mers.tga"
+        },
+        {
+            "path": "textures/particle/noxious_gas.png"
+        },
+        {
+            "path": "textures/particle/noxious_gas.texture_set.json"
+        },
+        {
+            "path": "textures/particle/noxious_gas_mers.tga"
+        },
+        {
+            "path": "textures/particle/sulfur_cube_goo.png"
+        },
+        {
+            "path": "textures/particle/sulfur_cube_goo.texture_set.json"
+        },
+        {
+            "path": "textures/particle/sulfur_cube_goo_mers.tga"
+        }
+    ]
+}

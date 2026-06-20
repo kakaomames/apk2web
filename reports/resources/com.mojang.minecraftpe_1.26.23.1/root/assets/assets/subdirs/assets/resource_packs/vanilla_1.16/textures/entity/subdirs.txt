@@ -1,0 +1,5 @@
+banner
+hoglin
+piglin
+strider
+zoglin

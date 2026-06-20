@@ -1,0 +1,5 @@
+breeze
+melee
+ranged
+slow_ranged
+small_melee

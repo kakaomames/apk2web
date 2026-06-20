@@ -1,0 +1,4 @@
+entities
+loot_tables
+trading
+__brarchive

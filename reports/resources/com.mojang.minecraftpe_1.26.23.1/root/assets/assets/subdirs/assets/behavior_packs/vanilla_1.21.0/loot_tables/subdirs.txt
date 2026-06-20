@@ -1,0 +1,6 @@
+chests
+dispensers
+entities
+equipment
+pots
+spawners

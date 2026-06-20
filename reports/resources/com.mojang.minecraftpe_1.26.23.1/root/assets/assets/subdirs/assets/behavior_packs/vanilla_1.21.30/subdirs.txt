@@ -1,0 +1,6 @@
+entities
+loot_tables
+recipes
+structures
+trading
+__brarchive

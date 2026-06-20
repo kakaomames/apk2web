@@ -1,0 +1,91 @@
+{
+    "content": [
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "shapes/box_16x10x16.json"
+        },
+        {
+            "path": "shapes/box_16x12x16.json"
+        },
+        {
+            "path": "shapes/box_16x13x16.json"
+        },
+        {
+            "path": "shapes/box_16x14x16.json"
+        },
+        {
+            "path": "shapes/box_16x15x16.json"
+        },
+        {
+            "path": "shapes/box_16x1x16.json"
+        },
+        {
+            "path": "shapes/box_16x2x16.json"
+        },
+        {
+            "path": "shapes/box_16x4x16.json"
+        },
+        {
+            "path": "shapes/box_16x6x16.json"
+        },
+        {
+            "path": "shapes/box_16x8x16.json"
+        },
+        {
+            "path": "shapes/box_16x9x16.json"
+        },
+        {
+            "path": "shapes/cake_bites_0.json"
+        },
+        {
+            "path": "shapes/cake_bites_1.json"
+        },
+        {
+            "path": "shapes/cake_bites_2.json"
+        },
+        {
+            "path": "shapes/cake_bites_3.json"
+        },
+        {
+            "path": "shapes/cake_bites_4.json"
+        },
+        {
+            "path": "shapes/cake_bites_5.json"
+        },
+        {
+            "path": "shapes/cake_bites_6.json"
+        },
+        {
+            "path": "shapes/candle_cake.json"
+        },
+        {
+            "path": "shapes/composter.json"
+        },
+        {
+            "path": "shapes/composter_level_1.json"
+        },
+        {
+            "path": "shapes/composter_level_2.json"
+        },
+        {
+            "path": "shapes/composter_level_3.json"
+        },
+        {
+            "path": "shapes/composter_level_4.json"
+        },
+        {
+            "path": "shapes/composter_level_5.json"
+        },
+        {
+            "path": "shapes/composter_level_6.json"
+        },
+        {
+            "path": "shapes/composter_level_7.json"
+        },
+        {
+            "path": "shapes/slab_type_top.json"
+        }
+    ]
+}

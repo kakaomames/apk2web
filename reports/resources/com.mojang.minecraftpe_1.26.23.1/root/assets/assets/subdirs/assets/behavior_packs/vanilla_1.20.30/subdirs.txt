@@ -1,0 +1,4 @@
+entities
+feature_rules
+loot_tables
+__brarchive

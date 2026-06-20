@@ -1,0 +1,8 @@
+medium
+medium_skeleton
+small
+smaller
+smaller_skeleton
+small_skeleton
+tall
+tall_skeleton

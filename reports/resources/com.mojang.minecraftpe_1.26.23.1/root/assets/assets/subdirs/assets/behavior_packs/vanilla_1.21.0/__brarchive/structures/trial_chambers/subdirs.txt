@@ -1,0 +1,4 @@
+chamber
+chests
+corridor
+spawner

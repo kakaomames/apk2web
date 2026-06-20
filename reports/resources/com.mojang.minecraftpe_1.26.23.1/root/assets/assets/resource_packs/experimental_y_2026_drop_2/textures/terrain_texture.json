@@ -1,0 +1,35 @@
+{
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "sulfur": {
+      "textures": "textures/blocks/sulfur"
+    },
+    "polished_sulfur": {
+      "textures": "textures/blocks/polished_sulfur"
+    },
+    "sulfur_bricks": {
+      "textures": "textures/blocks/sulfur_bricks"
+    },
+    "chiseled_sulfur": {
+      "textures": "textures/blocks/chiseled_sulfur"
+    },
+    "potent_sulfur": {
+      "textures": "textures/blocks/potent_sulfur"
+    },
+    "cinnabar": {
+      "textures": "textures/blocks/cinnabar"
+    },
+    "polished_cinnabar": {
+      "textures": "textures/blocks/polished_cinnabar"
+    },
+    "cinnabar_bricks": {
+      "textures": "textures/blocks/cinnabar_bricks"
+    },
+    "chiseled_cinnabar": {
+      "textures": "textures/blocks/chiseled_cinnabar"
+    }
+  }
+}

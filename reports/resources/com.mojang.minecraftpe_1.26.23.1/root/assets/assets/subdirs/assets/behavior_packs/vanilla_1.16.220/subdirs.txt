@@ -1,0 +1,3 @@
+entities
+loot_tables
+__brarchive

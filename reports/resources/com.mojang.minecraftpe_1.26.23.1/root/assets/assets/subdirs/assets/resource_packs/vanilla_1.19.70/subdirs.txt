@@ -1,0 +1,5 @@
+animations
+items
+sounds
+textures
+__brarchive

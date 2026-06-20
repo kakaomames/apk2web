@@ -1,0 +1,10 @@
+bee
+dolphin
+fox
+goat
+hoglin
+panda
+pig
+piglin
+rabbit
+sniffer

@@ -1,0 +1,17 @@
+axe
+bonemeal
+book
+brush
+bundle
+dye
+honeycomb
+horn
+ink_sac
+mace
+ominous_bottle
+shield
+spear
+spyglass
+trident
+wind_charge
+wooden_spear

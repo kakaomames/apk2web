@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+  <style name="Base.Theme.SplashScreen.DayNight" parent="@style/Base.Theme.SplashScreen" />
+  <style name="Braze.Push.InlineImage.TextArea.Header.AppIcon" parent="@style/Braze.Push.InlineImage.TextArea.Header">
+    <item name="android:layout_width">18.0dp</item>
+    <item name="android:layout_height">18.0dp</item>
+    <item name="android:layout_marginRight">3.0dp</item>
+    <item name="android:tint">#777777</item>
+    <item name="android:contentDescription">@null</item>
+  </style>
+  <style name="Theme.AppCompat.DayNight" parent="@style/Theme.AppCompat" />
+  <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="@style/Theme.AppCompat" />
+  <style name="Theme.AppCompat.DayNight.Dialog" parent="@style/Theme.AppCompat.Dialog" />
+  <style name="Theme.AppCompat.DayNight.Dialog.Alert" parent="@style/Theme.AppCompat.Dialog.Alert" />
+  <style name="Theme.AppCompat.DayNight.Dialog.MinWidth" parent="@style/Theme.AppCompat.Dialog.MinWidth" />
+  <style name="Theme.AppCompat.DayNight.DialogWhenLarge" parent="@style/Theme.AppCompat.DialogWhenLarge" />
+  <style name="Theme.AppCompat.DayNight.NoActionBar" parent="@style/Theme.AppCompat.NoActionBar" />
+  <style name="ThemeOverlay.AppCompat.DayNight" parent="@style/ThemeOverlay.AppCompat.Dark" />
+</resources>

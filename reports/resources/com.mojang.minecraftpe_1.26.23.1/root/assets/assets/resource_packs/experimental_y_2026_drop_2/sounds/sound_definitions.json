@@ -1,0 +1,322 @@
+ {
+    "mob.sulfur_cube.jump": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/jump1",
+        "sounds/mob/sulfur_cube/jump2",
+        "sounds/mob/sulfur_cube/jump3",
+        "sounds/mob/sulfur_cube/jump4",
+        "sounds/mob/sulfur_cube/jump5",
+        "sounds/mob/sulfur_cube/jump6",
+        "sounds/mob/sulfur_cube/jump7",
+        "sounds/mob/sulfur_cube/jump8",
+        "sounds/mob/sulfur_cube/jump9",
+        "sounds/mob/sulfur_cube/jump10",
+        "sounds/mob/sulfur_cube/jump11"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.squish"
+    },
+    "mob.sulfur_cube.death": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/death"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.death"
+    },
+    "mob.sulfur_cube.hurt": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/hit1",
+        "sounds/mob/sulfur_cube/hit2",
+        "sounds/mob/sulfur_cube/hit3",
+        "sounds/mob/sulfur_cube/hit4"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.hurt"
+    },
+    "mob.sulfur_cube.bounce": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/ball/bounce1",
+        "sounds/mob/sulfur_cube/ball/bounce2",
+        "sounds/mob/sulfur_cube/ball/bounce3",
+        "sounds/mob/sulfur_cube/ball/bounce4",
+        "sounds/mob/sulfur_cube/ball/bounce5",
+        "sounds/mob/sulfur_cube/ball/bounce6",
+        "sounds/mob/sulfur_cube/ball/bounce7",
+        "sounds/mob/sulfur_cube/ball/bounce8"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.bounce"
+    },
+    "mob.sulfur_cube.push": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/ball/push1",
+        "sounds/mob/sulfur_cube/ball/push2",
+        "sounds/mob/sulfur_cube/ball/push3",
+        "sounds/mob/sulfur_cube/ball/push4"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.push"
+    },
+    "mob.sulfur_cube.with_block.hit": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/ball/hit1",
+        "sounds/mob/sulfur_cube/ball/hit2",
+        "sounds/mob/sulfur_cube/ball/hit3",
+        "sounds/mob/sulfur_cube/ball/hit4"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.hit"
+    },
+    "mob.sulfur_cube.small.jump": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/small/jump1",
+        "sounds/mob/sulfur_cube/small/jump2",
+        "sounds/mob/sulfur_cube/small/jump3",
+        "sounds/mob/sulfur_cube/small/jump4",
+        "sounds/mob/sulfur_cube/small/jump5",
+        "sounds/mob/sulfur_cube/small/jump6",
+        "sounds/mob/sulfur_cube/small/jump7",
+        "sounds/mob/sulfur_cube/small/jump8",
+        "sounds/mob/sulfur_cube/small/jump9",
+        "sounds/mob/sulfur_cube/small/jump10",
+        "sounds/mob/sulfur_cube/small/jump11"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.squish"
+    },
+    "mob.sulfur_cube.small.death": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/small/death"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.death"
+    },
+    "mob.sulfur_cube.small.hurt": {
+      "category": "neutral",
+      "sounds": [
+        "sounds/mob/sulfur_cube/small/hit1",
+        "sounds/mob/sulfur_cube/small/hit2",
+        "sounds/mob/sulfur_cube/small/hit3",
+        "sounds/mob/sulfur_cube/small/hit4"
+      ],
+      "subtitle": "subtitles.entity.sulfur_cube.hurt"
+    },
+    "block.sulfur.break": {
+      "category": "block",
+      "max_distance": 16.0,
+      "sounds": [
+        "sounds/block/sulfur/break1",
+        "sounds/block/sulfur/break2",
+        "sounds/block/sulfur/break3",
+        "sounds/block/sulfur/break4",
+        "sounds/block/sulfur/break5",
+        "sounds/block/sulfur/break6",
+        "sounds/block/sulfur/break7"
+      ],
+      "subtitle": "subtitles.block.generic.break"
+    },
+    "block.sulfur.hit": {
+      "category": "block",
+      "max_distance": 16.0,
+      "sounds": [
+        "sounds/block/sulfur/hit1",
+        "sounds/block/sulfur/hit2",
+        "sounds/block/sulfur/hit3",
+        "sounds/block/sulfur/hit4",
+        "sounds/block/sulfur/hit5",
+        "sounds/block/sulfur/hit6",
+        "sounds/block/sulfur/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.hit"
+    },
+    "block.sulfur.place": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/sulfur/place1",
+        "sounds/block/sulfur/place2",
+        "sounds/block/sulfur/place3",
+        "sounds/block/sulfur/place4",
+        "sounds/block/sulfur/place5",
+        "sounds/block/sulfur/place6",
+        "sounds/block/sulfur/place7"
+      ],
+      "subtitle": "subtitles.block.generic.place"
+    },
+    "block.sulfur.step": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/sulfur/step1",
+        "sounds/block/sulfur/step2",
+        "sounds/block/sulfur/step3",
+        "sounds/block/sulfur/step4",
+        "sounds/block/sulfur/step5",
+        "sounds/block/sulfur/step6",
+        "sounds/block/sulfur/step7"
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "block.sulfur.fall": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/sulfur/hit1",
+        "sounds/block/sulfur/hit2",
+        "sounds/block/sulfur/hit3",
+        "sounds/block/sulfur/hit4",
+        "sounds/block/sulfur/hit5",
+        "sounds/block/sulfur/hit6",
+        "sounds/block/sulfur/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.fall"
+    },
+    "block.potent_sulfur.break": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/potent_sulfur/break1",
+        "sounds/block/potent_sulfur/break2",
+        "sounds/block/potent_sulfur/break3",
+        "sounds/block/potent_sulfur/break4",
+        "sounds/block/potent_sulfur/break5",
+        "sounds/block/potent_sulfur/break6",
+        "sounds/block/potent_sulfur/break7"
+      ],
+      "subtitle": "subtitles.block.generic.break"
+    },
+    "block.potent_sulfur.hit": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/potent_sulfur/hit1",
+        "sounds/block/potent_sulfur/hit2",
+        "sounds/block/potent_sulfur/hit3",
+        "sounds/block/potent_sulfur/hit4",
+        "sounds/block/potent_sulfur/hit5",
+        "sounds/block/potent_sulfur/hit6",
+        "sounds/block/potent_sulfur/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.hit"
+    },
+    "block.potent_sulfur.place": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/potent_sulfur/place1",
+        "sounds/block/potent_sulfur/place2",
+        "sounds/block/potent_sulfur/place3",
+        "sounds/block/potent_sulfur/place4",
+        "sounds/block/potent_sulfur/place5",
+        "sounds/block/potent_sulfur/place6",
+        "sounds/block/potent_sulfur/place7",
+        "sounds/block/potent_sulfur/place8"
+      ],
+      "subtitle": "subtitles.block.generic.place"
+    },
+    "block.potent_sulfur.step": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/potent_sulfur/step1",
+        "sounds/block/potent_sulfur/step2",
+        "sounds/block/potent_sulfur/step3",
+        "sounds/block/potent_sulfur/step4",
+        "sounds/block/potent_sulfur/step5",
+        "sounds/block/potent_sulfur/step6",
+        "sounds/block/potent_sulfur/step7"
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "block.potent_sulfur.fall": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/potent_sulfur/hit1",
+        "sounds/block/potent_sulfur/hit2",
+        "sounds/block/potent_sulfur/hit3",
+        "sounds/block/potent_sulfur/hit4",
+        "sounds/block/potent_sulfur/hit5",
+        "sounds/block/potent_sulfur/hit6",
+        "sounds/block/potent_sulfur/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.fall"
+    },
+    "block.potent_sulfur.ambient": {
+      "category": "ambient",
+      "sounds": [
+        "sounds/block/potent_sulfur/ambient1",
+        "sounds/block/potent_sulfur/ambient2",
+        "sounds/block/potent_sulfur/ambient3",
+        "sounds/block/potent_sulfur/ambient4",
+        "sounds/block/potent_sulfur/ambient5",
+        "sounds/block/potent_sulfur/ambient6",
+        "sounds/block/potent_sulfur/ambient7",
+        "sounds/block/potent_sulfur/ambient8",
+        "sounds/block/potent_sulfur/ambient9",
+        "sounds/block/potent_sulfur/ambient10",
+        "sounds/block/potent_sulfur/ambient11",
+        "sounds/block/potent_sulfur/ambient12",
+        "sounds/block/potent_sulfur/ambient13",
+        "sounds/block/potent_sulfur/ambient14"
+      ],
+      "subtitle": "subtitles.block.potent_sulfur.noxious_gas"
+    },
+    "block.cinnabar.break": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/cinnabar/break1",
+        "sounds/block/cinnabar/break2",
+        "sounds/block/cinnabar/break3",
+        "sounds/block/cinnabar/break4",
+        "sounds/block/cinnabar/break5",
+        "sounds/block/cinnabar/break6",
+        "sounds/block/cinnabar/break7"
+      ],
+      "subtitle": "subtitles.block.generic.break"
+    },
+    "block.cinnabar.hit": {
+        "category": "block",
+      "sounds": [
+        "sounds/block/cinnabar/hit1",
+        "sounds/block/cinnabar/hit2",
+        "sounds/block/cinnabar/hit3",
+        "sounds/block/cinnabar/hit4",
+        "sounds/block/cinnabar/hit5",
+        "sounds/block/cinnabar/hit6",
+        "sounds/block/cinnabar/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.hit"
+    },
+    "block.cinnabar.place": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/cinnabar/place1",
+        "sounds/block/cinnabar/place2",
+        "sounds/block/cinnabar/place3",
+        "sounds/block/cinnabar/place4",
+        "sounds/block/cinnabar/place5",
+        "sounds/block/cinnabar/place6",
+        "sounds/block/cinnabar/place7"
+      ],
+      "subtitle": "subtitles.block.generic.place"
+    },
+    "block.cinnabar.step": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/cinnabar/step1",
+        "sounds/block/cinnabar/step2",
+        "sounds/block/cinnabar/step3",
+        "sounds/block/cinnabar/step4",
+        "sounds/block/cinnabar/step5",
+        "sounds/block/cinnabar/step6",
+        "sounds/block/cinnabar/step7"
+      ],
+      "subtitle": "subtitles.block.generic.footsteps"
+    },
+    "block.cinnabar.fall": {
+      "category": "block",
+      "sounds": [
+        "sounds/block/cinnabar/hit1",
+        "sounds/block/cinnabar/hit2",
+        "sounds/block/cinnabar/hit3",
+        "sounds/block/cinnabar/hit4",
+        "sounds/block/cinnabar/hit5",
+        "sounds/block/cinnabar/hit6",
+        "sounds/block/cinnabar/hit7"
+      ],
+      "subtitle": "subtitles.block.generic.fall"
+    }
+  }

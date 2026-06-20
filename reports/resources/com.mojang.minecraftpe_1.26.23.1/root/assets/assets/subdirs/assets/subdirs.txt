@@ -1,0 +1,11 @@
+behavior_packs
+credits
+definitions
+fonts
+gui
+icu
+renderer
+resource_packs
+shaders
+skin_packs
+store

@@ -1,0 +1,14 @@
+ancient_city
+bastion
+coralcrust
+endcity
+fossils
+igloo
+mansion
+nether_fossils
+pillageroutpost
+ruin
+ruined_portal
+shipwreck
+trail_ruins
+village

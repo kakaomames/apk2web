@@ -1,0 +1,352 @@
+{
+    "content": [
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "biomes/sulfur_caves.biome.json"
+        },
+        {
+            "path": "entities/boat.json"
+        },
+        {
+            "path": "entities/chest_boat.json"
+        },
+        {
+            "path": "entities/chest_minecart.json"
+        },
+        {
+            "path": "entities/command_block_minecart.json"
+        },
+        {
+            "path": "entities/hopper_minecart.json"
+        },
+        {
+            "path": "entities/minecart.json"
+        },
+        {
+            "path": "entities/player.json"
+        },
+        {
+            "path": "entities/sulfur_cube.json"
+        },
+        {
+            "path": "entities/tnt_minecart.json"
+        },
+        {
+            "path": "features/glow_lichen_cluster_feature.json"
+        },
+        {
+            "path": "features/glow_lichen_feature.json"
+        },
+        {
+            "path": "features/potent_sulfur_block_feature.json"
+        },
+        {
+            "path": "features/potent_sulfur_block_search_feature.json"
+        },
+        {
+            "path": "features/random_sulfur_spring_feature.json"
+        },
+        {
+            "path": "features/scatter_random_sulfur_spring_feature.json"
+        },
+        {
+            "path": "features/sulfur_pool_with_potent_sulfur.json"
+        },
+        {
+            "path": "features/sulfur_pool_with_potent_sulfur_snap_to_surface_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_extra_large_1_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_large_1_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_large_2_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_medium_1_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_medium_2_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_medium_3_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_small_1_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_small_2_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_small_3_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_small_4_feature.json"
+        },
+        {
+            "path": "features/sulfur_spring_trail_to_surface_system_snap_to_ceiling_feature.json"
+        },
+        {
+            "path": "feature_rules/sulfur_caves_after_surface_sulfur_spring_trail_to_surface_system_feature_rules.json"
+        },
+        {
+            "path": "feature_rules/sulfur_caves_glow_lichen_cluster_feature.json"
+        },
+        {
+            "path": "feature_rules/sulfur_pool_with_potent_sulfur_block_after_surface_feature.json"
+        },
+        {
+            "path": "item_catalog/crafting_item_catalog.json"
+        },
+        {
+            "path": "recipes/cinnabar_bricks.json"
+        },
+        {
+            "path": "recipes/cinnabar_brick_slab.json"
+        },
+        {
+            "path": "recipes/cinnabar_brick_stairs.json"
+        },
+        {
+            "path": "recipes/cinnabar_brick_wall.json"
+        },
+        {
+            "path": "recipes/cinnabar_slab.json"
+        },
+        {
+            "path": "recipes/cinnabar_stairs.json"
+        },
+        {
+            "path": "recipes/cinnabar_wall.json"
+        },
+        {
+            "path": "recipes/polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/polished_cinnabar_slab.json"
+        },
+        {
+            "path": "recipes/polished_cinnabar_stairs.json"
+        },
+        {
+            "path": "recipes/polished_cinnabar_wall.json"
+        },
+        {
+            "path": "recipes/polished_sulfur.json"
+        },
+        {
+            "path": "recipes/polished_sulfur_slab.json"
+        },
+        {
+            "path": "recipes/polished_sulfur_stairs.json"
+        },
+        {
+            "path": "recipes/polished_sulfur_wall.json"
+        },
+        {
+            "path": "recipes/potent_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_cinnabar_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_cinnabar_from_cinnabar_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_cinnabar_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_sulfur_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_sulfur_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_chiseled_sulfur_from_sulfur_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_bricks_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_bricks_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_slab_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_slab_from_cinnabar_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_slab_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_stairs_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_stairs_from_cinnabar_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_stairs_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_wall_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_wall_from_cinnabar_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_brick_wall_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_slab_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_stairs_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_cinnabar_wall_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_slab_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_slab_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_stairs_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_stairs_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_wall_from_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_cinnabar_wall_from_polished_cinnabar.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_slab_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_slab_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_stairs_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_stairs_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_wall_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_polished_sulfur_wall_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_bricks_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_bricks_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_slab_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_slab_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_slab_from_sulfur_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_stairs_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_stairs_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_stairs_from_sulfur_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_wall_from_polished_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_wall_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_brick_wall_from_sulfur_bricks.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_slab_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_stairs_from_sulfur.json"
+        },
+        {
+            "path": "recipes/stonecutter_sulfur_wall_from_sulfur.json"
+        },
+        {
+            "path": "recipes/sulfur_bricks.json"
+        },
+        {
+            "path": "recipes/sulfur_brick_slab.json"
+        },
+        {
+            "path": "recipes/sulfur_brick_stairs.json"
+        },
+        {
+            "path": "recipes/sulfur_brick_wall.json"
+        },
+        {
+            "path": "recipes/sulfur_slab.json"
+        },
+        {
+            "path": "recipes/sulfur_stairs.json"
+        },
+        {
+            "path": "recipes/sulfur_wall.json"
+        },
+        {
+            "path": "spawn_rules/sulfur_cube.json"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_extra_large_1.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_large_1.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_large_2.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_medium_1.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_medium_2.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_medium_3.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_small_1.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_small_2.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_small_3.mcstructure"
+        },
+        {
+            "path": "structures/sulfur_spring/sulfur_spring_small_4.mcstructure"
+        }
+    ]
+}

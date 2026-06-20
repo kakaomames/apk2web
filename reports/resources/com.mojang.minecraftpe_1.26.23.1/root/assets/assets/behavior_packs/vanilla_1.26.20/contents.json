@@ -1,0 +1,142 @@
+{
+    "content": [
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "entities/camel.json"
+        },
+        {
+            "path": "entities/drowned.json"
+        },
+        {
+            "path": "entities/egg.json"
+        },
+        {
+            "path": "entities/fox.json"
+        },
+        {
+            "path": "entities/glow_squid.json"
+        },
+        {
+            "path": "entities/hoglin.json"
+        },
+        {
+            "path": "entities/husk.json"
+        },
+        {
+            "path": "entities/iron_golem.json"
+        },
+        {
+            "path": "entities/panda.json"
+        },
+        {
+            "path": "entities/piglin.json"
+        },
+        {
+            "path": "entities/sheep.json"
+        },
+        {
+            "path": "entities/squid.json"
+        },
+        {
+            "path": "entities/villager_v2.json"
+        },
+        {
+            "path": "entities/zoglin.json"
+        },
+        {
+            "path": "entities/zombie.json"
+        },
+        {
+            "path": "entities/zombie_pigman.json"
+        },
+        {
+            "path": "entities/zombie_villager_v2.json"
+        },
+        {
+            "path": "features/moss_patch_bonemeal_feature.json"
+        },
+        {
+            "path": "features/moss_patch_feature.json"
+        },
+        {
+            "path": "features/pale_moss_patch_bonemeal_feature.json"
+        },
+        {
+            "path": "features/pale_moss_patch_feature.json"
+        },
+        {
+            "path": "recipes/furnace_acacia_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_azalea_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_birch_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_cherry_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_dark_oak_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_flowering_azalea_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_horse_armor_copper.json"
+        },
+        {
+            "path": "recipes/furnace_jungle_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_log_mangrove.json"
+        },
+        {
+            "path": "recipes/furnace_mangrove_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_mangrove_wood.json"
+        },
+        {
+            "path": "recipes/furnace_oak_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_pale_oak_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_resin_brick.json"
+        },
+        {
+            "path": "recipes/furnace_spruce_leaves.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_acacia_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_birch_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_dark_oak_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_jungle_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_mangrove_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_mangrove_wood.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_oak_log.json"
+        },
+        {
+            "path": "recipes/furnace_stripped_spruce_log.json"
+        },
+        {
+            "path": "recipes/torch.json"
+        }
+    ]
+}

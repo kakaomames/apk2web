@@ -1,0 +1,1062 @@
+[
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/accessibility@0.5x.icon-074c83066a12d1ba92d833866484b4cb.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5c46abf9"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/achievements@0.5x.icon-6eede64ea6084dccd76f5982773016f1.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a7083e29"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-behaviour-pack@0.5x.icon-5cd6606b9a57390e3d09bbc57eae6705.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3272af5c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-image@0.5x.icon-2a271b921056b82934fc30e1293e4c54.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0c977d7c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-ons@0.5x.icon-83147b312b1a9f1540d4b7a8a598747a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_dabc6504"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-ons_small@0.5x.icon-ff2ccd595338f2ce9393f84bff68ebc1.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0af9851a"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-player@0.5x.icon-d07d9e1acbc361b91c782042dea734ea.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_2f31e58e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/add-resource-pack@0.5x.icon-4293def0c2f9add215d5a2a2ecb3e5ea.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e1c9489e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/album@0.5x.icon-a0d6824e606706f14704652a77f4ba0c.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_92eb1d40"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/apple@0.5x.icon-e444df31d68e09c4f717ce2691810f88.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3c05f5d4"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/arrow-down@0.5x.icon-b78dd22a6205fc56fca7e93d3555d405.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4cedbac8"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/arrow-left@0.5x.icon-32012c9c1d3e6debaaf8ce01da9815de.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_861d47b8"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/arrow-right@0.5x.icon-017b4533e78e269aa61c6a5fd8b4d2ed.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_88b6c918"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/arrow-up@0.5x.icon-cc1be1e59c1d048c1bdb16d40730b05d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_edfe59e1"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/backup@0.5x.icon-4b8dec3ae20349b4578c4a643ca860a1.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_2d64b836"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/bell@0.5x.icon-d573c22e7435a32795e8458df037e82d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_61e652b3"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/block@0.5x.icon-0c1af775729856cb365d7d7de96c0d14.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c2c18445"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/block_small@0.5x.icon-d5d966684cea099ce5bc089c109c4337.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f32f3562"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/boots@0.5x.icon-da9f7e6fb353b00796b83be91af20127.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e114e8c5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/brush@0.5x.icon-2dbd0406f0d99242d65ba5c4a3bfac32.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_62f2a2f7"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/brush_small@0.5x.icon-d1261d3bf512dbafee2968bf9bc2958d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8b7f1873"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/calendar@0.5x.icon-7215459ca9533c908c9334e2f4019667.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5b4cdf4b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/checkmark@0.5x.icon-3a1f3dd3866716c7bc33ad20204c68ca.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0eb8e377"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/checkmark_small@0.5x.icon-3a1f3dd3866716c7bc33ad20204c68ca.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f44e862f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/chevron-down@0.5x.icon-0034ec5c85502861a7fba88e1f17681e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e62a261b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/chevron-left@0.5x.icon-bd82feed3671c96ec201568975cb9b29.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_7e73fee4"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/chevron-right@0.5x.icon-dbaf4e001f9c0e97d1eff650af9e8fd6.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0766cac8"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/chevron-up@0.5x.icon-bb53390a6964767e019a190f32bf1661.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5ad76542"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/closed-captions@0.5x.icon-cb37284dddd02c72d420c53099dff018.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_6067ccf5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/clothes@0.5x.icon-c29f5deb562bd5f4745c107aff95eab3.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_11d394ef"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/clothes_small@0.5x.icon-e69ef49ebc7a057aef10ce6afcc7e74e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_16b00d04"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/cloud@0.5x.icon-131ac71330b5cd2654da1bcbb7b93f81.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_332f9e8e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/comment@0.5x.icon-9b0d63997d1fcc41a1138f91332e49bc.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_49afef4d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/cross@0.5x.icon-a30f9556f5895c0d6996af977c6fbb91.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3c02e070"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/crossbow@0.5x.icon-2d64f202ef13278e8c0ef8ab9644997d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4381d808"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/damage@0.5x.icon-bb6c2a0a17055b97cd5e9ae70075c2dc.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3f93c58d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/default@0.5x.icon-ca9feed27c08fcea360741e5b33e8b9c.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_02a11b15"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/delete@0.5x.icon-32469cd2a6d22c9dd2a572efe9da74a7.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_aef4cab1"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/docs-page@0.5x.icon-fa252ff62f4ccf8130852ca0126875f7.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_41c4f9ce"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/docs-section@0.5x.icon-161746882fc55f614cf2d7c2653aa250.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_19ba50e4"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/download@0.5x.icon-7acbb5ad3510a559243f9bf24b1c8fb3.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_1b66d21b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/drag-and-drop@0.5x.icon-9bbb68575715c272324bbf6100666219.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8b098b51"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/duplicate@0.5x.icon-c4a992811ef709cd29b1c0ca8471a4c5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_b57c39fd"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/edit-image@0.5x.icon-04c02ff58e0e420d605995520c58ea34.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4f1ce95c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/edit@0.5x.icon-a786502003e9894de25c9a2b274fbcbb.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_ba5d9e18"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/elytra@0.5x.icon-b1f64fe620df63d637d0b24cbb9bbea8.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_1775f934"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/emerald@0.5x.icon-38e0dfd3fafd440a565542c9c43166de.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_230e106e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/emote@0.5x.icon-70c8b1fdc0831eb16cf40e86e5592430.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_b72d1b91"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/emote_small@0.5x.icon-d75af68f1be33602a4ea8c0e5ffa1edd.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4f78aa52"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/enter@0.5x.icon-c45c9e2b09b05e490ea7063ac2a97aff.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a177bf81"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/exit-fullscreen@0.5x.icon-9292d594aae5cdb08c8a841ee29f56c4.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a60d55c5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/exit@0.5x.icon-d4a8fcd7c6ba1ea43ac8d245aa4f05a1.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_01ab3f4d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/export@0.5x.icon-b9d595c947ab5063f389c7724ac0d757.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c93782f0"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/external-link@0.5x.icon-28016636e9d767b57dffe6e45fa749aa.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3eec5aa4"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/filter@0.5x.icon-4d527e67d899c241675338c67277d157.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_65cbd027"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/followers@0.5x.icon-8ae25037651f22cc3e3dba5d5822ffb3.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_41e2c13b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/friends@0.5x.icon-3f6fe3212da9db606129da5cb6ed9c69.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_46e2abec"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/friends_small@0.5x.icon-cba957f0ff904db92d763a4f533369e0.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c45335e3"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/fullscreen@0.5x.icon-e50fbdcbfd6e33f4590ec8a7d3a487cf.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_592e6031"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/gamerscore@0.5x.icon-552e15f1cf6d11d8f9313bfcf0151cc5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_1e984fa6"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/gamerscore_small@0.5x.icon-fc08f171a9b6331cf8ef256488aadfba.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c3035ea5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/grid@0.5x.icon-ca9feed27c08fcea360741e5b33e8b9c.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_6dd6f670"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/hanger@0.5x.icon-70c9da534ef852c6af7a89075fc40674.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5795381c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/hanger_small@0.5x.icon-4eb67798dafa1e02897729d35f33ae95.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8956fb35"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/hardcore-heart@0.5x.icon-176f799a22e5cd82ad50803e287f31b4.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_28d93637"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/hardcore-heart_small@0.5x.icon-176f799a22e5cd82ad50803e287f31b4.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_22c2136f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/heart-active@0.5x.icon-9789f18e32f40108b3b38292fd5e46b5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_14146f1a"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/heart@0.5x.icon-a77ff80d33bd021f88f3ed19f1b40df9.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_32730278"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/hourglass@0.5x.icon-9dd74eef6ea15cf1ac7a22dd48978fb4.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_77963da0"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/image@0.5x.icon-4433c6e18fc422fa3da756584a6e9b4b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a5bb7a3e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/information@0.5x.icon-6cc07a7ab6a0907b55601c569aedcb4f.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_ffa9b7ae"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/invite@0.5x.icon-226b39a108322f1dac90cc8509b9410a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_25939ced"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/lan-hidden@0.5x.icon-e2b1a2b941a1881716f0da7ca9410d38.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e8c3cf81"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/lan@0.5x.icon-0a33d509816c00e0aff750b933cf6a82.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_6fd93695"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/list@0.5x.icon-99757d20e9c3d4ab569000da42056717.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_822e4de1"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/lock-locked@0.5x.icon-da935503009a4edce6c7535d823a871f.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c7082736"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/lock-locked_small@0.5x.icon-da935503009a4edce6c7535d823a871f.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0b451f2e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/lock-unlocked@0.5x.icon-a79e940caba708a43dedce56ab4c5d6b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8f30eb3d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/mashup-pack@0.5x.icon-f78e35946dc11bc3e2d52d9e61c4f705.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_7274a0d6"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/mashup-pack_small@0.5x.icon-3bca49b4ec72f8f55adb3fc8202b583d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_73aeecca"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/member@0.5x.icon-a358584e5d61dc44c0d36068d8011e95.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f3e082d7"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/menu@0.5x.icon-eb6266d8768ee060c8a9eea05426eb5b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e4465bea"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/minus@0.5x.icon-b7a358c9760b7d82deb01145bb848a07.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_fbf5fea6"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/missing-image-1@0.5x.icon-32379f7716d29256f3b994ef068bd7e0.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_7abbd4d5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/missing-image@0.5x.icon-b29877c489f7d4c2ace61094e7d4b51d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_11714854"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/mute@0.5x.icon-344aa288bbe2604d6ec6b2b0eaf56804.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_01bbaad0"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/news-feed@0.5x.icon-b12b48f2350a19ba6ba2b965ba1e786e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_81ecfb49"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/operator@0.5x.icon-1ecc8a75ac3bcdea5c214cb190b9a2da.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_bedf5cee"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/options@0.5x.icon-3d0c4db8bc1a5e6efbeb6d205eb54713.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f2da514b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/party@0.5x.icon-b1cbf28a2e8cf3063a22e47e293c5c99.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f75b4c80"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/pause@0.5x.icon-5e6aa23b523d092f27dbd8a1b6b90fce.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_f9edd37c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/people-tab@0.5x.icon-e7a564b8585f3ed5da56b610d7f9f100.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_0c386d1e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/permission-custom@0.5x.icon-9bdec3d08f0c56361b0a21e3a95d0649.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a91f4c1f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/permission-member@0.5x.icon-b2593ff7034b49bd781729457eeb964b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_d762293f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/permission-operator@0.5x.icon-4e21f13147204d5a00af0966455a5dd0.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_47dabe4c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/permission-visitor@0.5x.icon-55433f2189f1c1b3ebe183d7821c4aaa.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_154742fe"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/pickaxe@0.5x.icon-9610b6415e6375a87cb339635c1b3e17.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_fc847f1b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/ping_high@0.5x.icon-da3c53699c688f3adb67fa05791d3696.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_2b73b87d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/ping_low@0.5x.icon-2ab51dc22f7df8d731d4123d5338aa72.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_adc8e123"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/ping_medium@0.5x.icon-2b3116dc63352aa99e7fead0801b06fd.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_7b680068"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/ping_none@0.5x.icon-5e126cdc690d3b31718e4be1f96cf255.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8242c60b"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/play@0.5x.icon-b8b55ea4f1c46c693cb64dee3db643bb.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5c1007fe"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/player-permissions@0.5x.icon-a387588f52e617c667f80ac892dc4924.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c01444ab"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/player@0.5x.icon-5f2efe885c1189f09a5388b6e6b07c9f.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_fa2c734f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/player_online@0.5x.icon-4d621bf5544e9b4f0276acd6a425310e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_1b8ad826"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/plus@1x.icon-bb0896fb794b5ac908344f0de1cc54f0.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a65025a5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/potion-bottle@0.5x.icon-c7faa5f8b3e171db62a6349f89dc80c7.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_799a5657"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/print@0.5x.icon-76d290224f7d33013747ea4f3fee3559.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_9a849507"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/qr-code@0.5x.icon-7c52719831c25aba19d40e2cbd402246.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_b069db61"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/question-mark@0.5x.icon-588fc5317db0de499be666162fe9a50e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_2f3384e0"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/question-mark_small@0.5x.icon-2527491b4a453689e5ccea590aa3714d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a816be93"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/rate@0.5x.icon-9838d2b5de98c298cd99ae6b021cfcc5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_83724709"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/realms-stories-unread@0.5x.icon-0198a98c2107e1033f6c72c2ec6cf29e.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c2a70295"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/realms-stories@0.5x.icon-677340ec8909090fe96b69367d589d72.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_04d4d554"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/realms-swirl@0.5x.icon-e5cb404e5b5820a68c8f3cd046f11834.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_5bf1ba35"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/remove-behaviour-pack@0.5x.icon-867307a200e96f52aa16486c8fff7263.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4fc4b73f"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/remove-player@0.5x.icon-95bf113cb2d9bff7ce4d22475a0f743a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_a8b26844"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/remove-resource-pack@0.5x.icon-c5325c66f0f3cb9a9c14964cf57560c4.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_eb920ee1"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/reset@0.5x.icon-4fc2a8ff6f440b4d14293bb8e833a1bc.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_9bf716d0"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/rotten-flesh@0.5x.icon-6fe1046a94f8004c19f6bbd2ce6a9186.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4fec9da5"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/save@0.5x.icon-ac67dd904f1361dc88952b1a34147d8b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_b9da4444"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/search@0.5x.icon-57e5a707535fd5959a31271ce38e0b7f.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_b8e43bde"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/settings@0.5x.icon-768deb134ddeae9ce37ab53735e95ac7.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_34fdf56d"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/share-android@0.5x.icon-2eb2c80664e84e2c70f86a944b073977.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_07f8571e"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/share-generic@0.5x.icon-b66817b2b5752724de2cc4b34fdd90ed.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_d7f19959"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/share-ios@0.5x.icon-72f05f9e39466070d8537d3cf0857472.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_fd67b2ce"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/sleep@0.5x.icon-70dbefb9586c01ab528e53baa394bf8d.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_52efde70"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/switch-off@0.5x.icon-9329bae8ce05dd7d826cee9108ade576.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_c164e04c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/switch-on@0.5x.icon-fb2d2f01f212bf04e800fab9fe694ec5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_9665f02c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/sword@0.5x.icon-37f92abbc98467d91f9b1618bc1e79b6.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_11047f08"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/thumbs-down@0.5x.icon-356f3bd6c6a3c64fff4695a6863b3b33.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_600dc63c"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/thumbs-up@0.5x.icon-da3a9919c97d3b83c3872a411fee8e5b.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_23d48181"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/time@0.5x.icon-a346381197b79da7fe5f03d77701255a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_8972e698"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/time_small@0.5x.icon-4119548aed0aa92e90bbf060c9d98df5.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_fd0c36d6"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/timer@0.5x.icon-d913d1f62c77c47334800c716aaea83a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_e10ce3c9"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/visitor@0.5x.icon-e83f3b367fe53cc2a9c67e87ab59d883.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_86b15656"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/volume@0.5x.icon-3f8ef1ae02124f871991af438a0ee485.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_4dff7e59"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/warning@0.5x.icon-92a9d874d72e753304a5d2435b46d2ac.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_436a2870"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/warning_small@0.5x.icon-92a9d874d72e753304a5d2435b46d2ac.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_286ca468"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/world@0.5x.icon-c6d2dbd6e364de3b8e6c6bd1a82b013a.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3ad27646"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/world_small@0.5x.icon-a41c5c41fc5d43f4cba9041a6c2a6492.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_3bcbd7ef"
+  },
+  {
+    "name": "assets/assets/gui/dist/hbui/assets/xp-orb@0.5x.icon-bfa62630055d9f30e25554deda71c819.png",
+    "alias": "assets/assets/gui/dist/hbui/assets/alias_44475cf1"
+  },
+  {
+    "name": "res/anim-v21/fragment_fast_out_extra_slow_in.xml",
+    "alias": "res/anim/fragment_fast_out_extra_slow_in.xml"
+  },
+  {
+    "name": "res/color-v23/abc_btn_colored_borderless_text_material.xml",
+    "alias": "res/color/abc_btn_colored_borderless_text_material.xml"
+  },
+  {
+    "name": "res/color-v23/abc_btn_colored_text_material.xml",
+    "alias": "res/color/abc_btn_colored_text_material.xml"
+  },
+  {
+    "name": "res/color-v23/abc_color_highlight_material.xml",
+    "alias": "res/color/abc_color_highlight_material.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_btn_checkable.xml",
+    "alias": "res/color/abc_tint_btn_checkable.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_default.xml",
+    "alias": "res/color/abc_tint_default.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_edittext.xml",
+    "alias": "res/color/abc_tint_edittext.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_seek_thumb.xml",
+    "alias": "res/color/abc_tint_seek_thumb.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_spinner.xml",
+    "alias": "res/color/abc_tint_spinner.xml"
+  },
+  {
+    "name": "res/color-v23/abc_tint_switch_track.xml",
+    "alias": "res/color/abc_tint_switch_track.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_answer.xml",
+    "alias": "res/drawable-anydpi/ic_call_answer.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_answer_low.xml",
+    "alias": "res/drawable-anydpi/ic_call_answer_low.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_answer_video.xml",
+    "alias": "res/drawable-anydpi/ic_call_answer_video.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_answer_video_low.xml",
+    "alias": "res/drawable-anydpi/ic_call_answer_video_low.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_decline.xml",
+    "alias": "res/drawable-anydpi/ic_call_decline.xml"
+  },
+  {
+    "name": "res/drawable-anydpi-v21/ic_call_decline_low.xml",
+    "alias": "res/drawable-anydpi/ic_call_decline_low.xml"
+  },
+  {
+    "name": "res/drawable-hdpi-v4/notification_oversize_large_icon_bg.png",
+    "alias": "res/drawable-hdpi/notification_oversize_large_icon_bg.png"
+  },
+  {
+    "name": "res/drawable-ldrtl-xxhdpi-v17/abc_spinner_mtrl_am_alpha.9.png",
+    "alias": "res/drawable-ldrtl-xxhdpi/abc_spinner_mtrl_am_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-nodpi-v21/com_braze_inappmessage_button_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_inappmessage_button_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_card_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_card_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_content_card_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_content_card_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_content_card_scrim.xml",
+    "alias": "res/drawable-nodpi/com_braze_content_card_scrim.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_content_card_scrim_focused.xml",
+    "alias": "res/drawable-nodpi/com_braze_content_card_scrim_focused.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_content_cards_rounded_corner_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_content_cards_rounded_corner_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_content_cards_unread_bar_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_content_cards_unread_bar_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_inappmessage_icon_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_inappmessage_icon_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_inappmessage_modal_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_inappmessage_modal_background.xml"
+  },
+  {
+    "name": "res/drawable-nodpi-v4/com_braze_inappmessage_slideup_background.xml",
+    "alias": "res/drawable-nodpi/com_braze_inappmessage_slideup_background.xml"
+  },
+  {
+    "name": "res/drawable-v21/abc_action_bar_item_background_material.xml",
+    "alias": "res/drawable/abc_action_bar_item_background_material.xml"
+  },
+  {
+    "name": "res/drawable-v21/abc_btn_colored_material.xml",
+    "alias": "res/drawable/abc_btn_colored_material.xml"
+  },
+  {
+    "name": "res/drawable-v21/abc_dialog_material_background.xml",
+    "alias": "res/drawable/abc_dialog_material_background.xml"
+  },
+  {
+    "name": "res/drawable-v21/abc_edit_text_material.xml",
+    "alias": "res/drawable/abc_edit_text_material.xml"
+  },
+  {
+    "name": "res/drawable-v21/abc_list_divider_material.xml",
+    "alias": "res/drawable/abc_list_divider_material.xml"
+  },
+  {
+    "name": "res/drawable-v21/notification_action_background.xml",
+    "alias": "res/drawable/notification_action_background.xml"
+  },
+  {
+    "name": "res/drawable-v23/abc_control_background_material.xml",
+    "alias": "res/drawable/abc_control_background_material.xml"
+  },
+  {
+    "name": "res/drawable-v23/compat_splash_screen.xml",
+    "alias": "res/drawable/compat_splash_screen.xml"
+  },
+  {
+    "name": "res/drawable-v23/compat_splash_screen_no_icon_background.xml",
+    "alias": "res/drawable/compat_splash_screen_no_icon_background.xml"
+  },
+  {
+    "name": "res/drawable-watch-v20/abc_dialog_material_background.xml",
+    "alias": "res/drawable-watch/abc_dialog_material_background.xml"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_content_card_icon_pinned.png",
+    "alias": "res/drawable-xhdpi/com_braze_content_card_icon_pinned.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_content_card_icon_read.png",
+    "alias": "res/drawable-xhdpi/com_braze_content_card_icon_read.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_content_card_icon_unread.png",
+    "alias": "res/drawable-xhdpi/com_braze_content_card_icon_unread.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_inappmessage_button_close.png",
+    "alias": "res/drawable-xhdpi/com_braze_inappmessage_button_close.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_inappmessage_button_close_focused.png",
+    "alias": "res/drawable-xhdpi/com_braze_inappmessage_button_close_focused.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/com_braze_inappmessage_chevron.png",
+    "alias": "res/drawable-xhdpi/com_braze_inappmessage_chevron.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/common_full_open_on_phone.png",
+    "alias": "res/drawable-xhdpi/common_full_open_on_phone.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_low_normal.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_low_normal.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_low_pressed.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_low_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_normal.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_normal.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png",
+    "alias": "res/drawable-xhdpi/notification_bg_normal_pressed.9.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png",
+    "alias": "res/drawable-xhdpi/notify_panel_notification_icon_bg.png"
+  },
+  {
+    "name": "res/drawable-xhdpi-v4/xbid_x_icon.png",
+    "alias": "res/drawable-xhdpi/xbid_x_icon.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_ab_share_pack_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_check_to_on_mtrl_000.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_check_to_on_mtrl_015.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_check_to_on_mtrl_015.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_000.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_radio_to_on_mtrl_000.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_radio_to_on_mtrl_015.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
+    "alias": "res/drawable-xxhdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_cab_background_top_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
+    "alias": "res/drawable-xxhdpi/abc_ic_commit_search_api_mtrl_alpha.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_divider_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_divider_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_focused_holo.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_longpressed_holo.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_pressed_holo_dark.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_pressed_holo_light.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_pressed_holo_light.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_selector_disabled_holo_dark.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_list_selector_disabled_holo_light.9.png",
+    "alias": "res/drawable-xxhdpi/abc_list_selector_disabled_holo_light.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
+    "alias": "res/drawable-xxhdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_popup_background_mtrl_mult.9.png",
+    "alias": "res/drawable-xxhdpi/abc_popup_background_mtrl_mult.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_scrubber_control_off_mtrl_alpha.png",
+    "alias": "res/drawable-xxhdpi/abc_scrubber_control_off_mtrl_alpha.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
+    "alias": "res/drawable-xxhdpi/abc_scrubber_control_to_pressed_mtrl_000.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png",
+    "alias": "res/drawable-xxhdpi/abc_scrubber_control_to_pressed_mtrl_005.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_scrubber_primary_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_scrubber_track_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_spinner_mtrl_am_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_switch_track_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_switch_track_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_tab_indicator_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_text_select_handle_left_mtrl.png",
+    "alias": "res/drawable-xxhdpi/abc_text_select_handle_left_mtrl.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_text_select_handle_middle_mtrl.png",
+    "alias": "res/drawable-xxhdpi/abc_text_select_handle_middle_mtrl.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_text_select_handle_right_mtrl.png",
+    "alias": "res/drawable-xxhdpi/abc_text_select_handle_right_mtrl.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_textfield_activated_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_textfield_default_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_textfield_default_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_textfield_search_activated_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
+    "alias": "res/drawable-xxhdpi/abc_textfield_search_default_mtrl_alpha.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_off_disabled_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_off_disabled_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_off_disabled_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_off_disabled_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_off_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_off_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_off_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_off_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_off_pressed_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_off_pressed_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_on_disabled_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_on_disabled_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_on_disabled_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_on_disabled_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_on_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_on_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_on_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_on_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_check_on_pressed_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_check_on_pressed_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_off_disabled_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_off_disabled_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_off_disabled_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_off_disabled_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_off_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_off_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_off_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_off_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_off_pressed_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_off_pressed_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_on_disabled_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_on_disabled_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_on_disabled_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_on_disabled_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_on_focused_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_on_focused_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_on_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_on_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/apptheme_btn_radio_on_pressed_holo_light.png",
+    "alias": "res/drawable-xxhdpi/apptheme_btn_radio_on_pressed_holo_light.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/com_braze_push_ic_left_arrow.png",
+    "alias": "res/drawable-xxhdpi/com_braze_push_ic_left_arrow.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/com_braze_push_ic_right_arrow.png",
+    "alias": "res/drawable-xxhdpi/com_braze_push_ic_right_arrow.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png",
+    "alias": "res/drawable-xxhdpi/common_google_signin_btn_icon_dark_normal_background.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png",
+    "alias": "res/drawable-xxhdpi/common_google_signin_btn_icon_light_normal_background.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png",
+    "alias": "res/drawable-xxhdpi/common_google_signin_btn_text_dark_normal_background.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png",
+    "alias": "res/drawable-xxhdpi/common_google_signin_btn_text_light_normal_background.9.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/googleg_disabled_color_18.png",
+    "alias": "res/drawable-xxhdpi/googleg_disabled_color_18.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/googleg_standard_color_18.png",
+    "alias": "res/drawable-xxhdpi/googleg_standard_color_18.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/icon.png",
+    "alias": "res/drawable-xxhdpi/icon.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/splash_screen_logo.png",
+    "alias": "res/drawable-xxhdpi/splash_screen_logo.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/xbid_gamerscore.png",
+    "alias": "res/drawable-xxhdpi/xbid_gamerscore.png"
+  },
+  {
+    "name": "res/drawable-xxhdpi-v4/xbid_search.png",
+    "alias": "res/drawable-xxhdpi/xbid_search.png"
+  },
+  {
+    "name": "res/layout-v21/notification_action.xml",
+    "alias": "res/layout/notification_action.xml"
+  },
+  {
+    "name": "res/layout-v21/notification_action_tombstone.xml",
+    "alias": "res/layout/notification_action_tombstone.xml"
+  },
+  {
+    "name": "res/layout-v21/notification_template_custom_big.xml",
+    "alias": "res/layout/notification_template_custom_big.xml"
+  },
+  {
+    "name": "res/layout-v21/notification_template_icon_group.xml",
+    "alias": "res/layout/notification_template_icon_group.xml"
+  },
+  {
+    "name": "res/layout-v26/abc_screen_toolbar.xml",
+    "alias": "res/layout/abc_screen_toolbar.xml"
+  },
+  {
+    "name": "res/layout-watch-v20/abc_alert_dialog_button_bar_material.xml",
+    "alias": "res/layout-watch/abc_alert_dialog_button_bar_material.xml"
+  },
+  {
+    "name": "res/layout-watch-v20/abc_alert_dialog_title_material.xml",
+    "alias": "res/layout-watch/abc_alert_dialog_title_material.xml"
+  }
+]

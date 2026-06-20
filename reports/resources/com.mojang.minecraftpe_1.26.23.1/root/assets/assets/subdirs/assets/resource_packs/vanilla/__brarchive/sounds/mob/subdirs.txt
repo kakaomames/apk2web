@@ -1,0 +1,12 @@
+cat
+chicken
+copper_golem
+cow
+dolphin
+drowned
+horse
+pig
+player
+shulker
+sulfur_cube
+wolf

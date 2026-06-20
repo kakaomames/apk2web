@@ -1,0 +1,7 @@
+{
+  "version": 38,
+  "markers": [
+    "~~D8{\"backend\":\"dex\",\"compilation-mode\":\"release\",\"has-checksums\":false,\"min-api\":26,\"version\":\"8.7.14\"}",
+    "~~R8{\"backend\":\"cf\",\"compilation-mode\":\"release\",\"has-checksums\":false,\"pg-map-id\":\"388edf3\",\"r8-mode\":\"compatibility\",\"version\":\"3.1.51\"}"
+  ]
+}

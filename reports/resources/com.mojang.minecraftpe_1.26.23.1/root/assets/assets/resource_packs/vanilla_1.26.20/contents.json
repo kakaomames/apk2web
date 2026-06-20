@@ -1,0 +1,193 @@
+{
+    "content": [
+        {
+            "path": "manifest.json"
+        },
+        {
+            "path": "sounds.json"
+        },
+        {
+            "path": "animations/squid.animation.json"
+        },
+        {
+            "path": "animations/turtle.animations.json"
+        },
+        {
+            "path": "animations/wolf.animations.json"
+        },
+        {
+            "path": "animation_controllers/rabbit.animation_controllers.v2.json"
+        },
+        {
+            "path": "animation_controllers/turtle.animations_controllers.json"
+        },
+        {
+            "path": "entity/turtle.entity.json"
+        },
+        {
+            "path": "models/entity/baby_armor_chestplate.geo.json"
+        },
+        {
+            "path": "models/entity/baby_squid.geo.json"
+        },
+        {
+            "path": "models/entity/baby_strider.geo.json"
+        },
+        {
+            "path": "models/entity/baby_villager.geo.json"
+        },
+        {
+            "path": "models/entity/baby_zombie_villager.geo.json"
+        },
+        {
+            "path": "particles/pause_mob_growth.json"
+        },
+        {
+            "path": "particles/reset_mob_growth.json"
+        },
+        {
+            "path": "sounds/sound_definitions.json"
+        },
+        {
+            "path": "textures/entity/bee/bee_angry_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/bee/bee_angry_nectar_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/bee/bee_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/bee/bee_nectar_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/dolphin/dolphin_baby.png"
+        },
+        {
+            "path": "textures/entity/dolphin/dolphin_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/fox/fox_snow_sleep_baby.png"
+        },
+        {
+            "path": "textures/entity/goat/goat_baby.png"
+        },
+        {
+            "path": "textures/entity/goat/goat_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/hoglin/hoglin_baby.png"
+        },
+        {
+            "path": "textures/entity/hoglin/hoglin_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_aggressive_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_aggressive_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_brown_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_brown_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_lazy_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_lazy_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_playful_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_playful_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_weak_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_weak_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/panda/panda_worried_baby.png"
+        },
+        {
+            "path": "textures/entity/panda/panda_worried_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/pig/pig_warm_baby.png"
+        },
+        {
+            "path": "textures/entity/pig/pig_warm_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/piglin/zombie_piglin_baby.png"
+        },
+        {
+            "path": "textures/entity/piglin/zombie_piglin_baby_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_black.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_black_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_brown.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_brown_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_gold.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_gold_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_salt.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_salt_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_toast.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_toast_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_white.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_white_mers.tga"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_white_splotched.png"
+        },
+        {
+            "path": "textures/entity/rabbit/rabbit_white_splotched_mers.tga"
+        },
+        {
+            "path": "textures/entity/sniffer/snifflet.png"
+        },
+        {
+            "path": "textures/entity/sniffer/snifflet_mers.tga"
+        },
+        {
+            "path": "textures/models/armor/chainmail_baby.png"
+        },
+        {
+            "path": "textures/models/armor/chainmail_baby_mers.tga"
+        }
+    ]
+}

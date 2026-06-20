@@ -1,0 +1,4 @@
+chests
+dispensers
+entities
+spawners

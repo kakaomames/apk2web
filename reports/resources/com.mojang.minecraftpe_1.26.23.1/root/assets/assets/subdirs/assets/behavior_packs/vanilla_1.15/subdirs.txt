@@ -1,0 +1,5 @@
+entities
+loot_tables
+recipes
+spawn_rules
+__brarchive

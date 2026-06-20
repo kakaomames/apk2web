@@ -1,0 +1,214 @@
+{
+  "block_sounds" : {
+    "sulfur": {
+      "volume": 1.0,
+      "pitch": 1.0,
+      "events": {
+        "break": {
+          "sound": "block.sulfur.break",
+          "pitch": 0.8
+        },
+        "place": {
+          "sound": "block.sulfur.place",
+          "pitch": 0.8
+        },
+        "hit": {
+          "sound": "block.sulfur.hit",
+          "volume": 0.3,
+          "pitch": 0.5
+        }
+      }
+    },
+    "potent_sulfur": {
+      "volume": 1.0,
+      "pitch": 1.0,
+      "events": {
+        "break": {
+          "sound": "block.potent_sulfur.break",
+          "pitch": 0.8
+        },
+        "place": {
+          "sound": "block.potent_sulfur.place",
+          "pitch": 0.8
+        },
+        "hit": {
+          "sound": "block.potent_sulfur.hit",
+          "volume": 0.3,
+          "pitch": 0.5
+        },
+        "ambient": {
+          "sound": "block.potent_sulfur.ambient"
+        }
+      }
+    },
+    "cinnabar": {
+      "volume": 1.0,
+      "pitch": 1.0,
+      "events": {
+        "break": {
+          "sound": "block.cinnabar.break",
+          "pitch": 0.8
+        },
+        "place": {
+          "sound": "block.cinnabar.place",
+          "pitch": 0.8
+        },
+        "hit": {
+          "sound": "block.cinnabar.hit",
+          "volume": 0.3,
+          "pitch": 0.5
+        }
+      }
+    }
+  },
+  "interactive_sounds": {
+    "block_sounds": {
+      "sulfur": {
+        "volume": 1.0,
+        "pitch": 1.0,
+        "events": {
+          "step": {
+            "sound": "block.sulfur.step",
+            "volume": 0.3,
+            "pitch": 1.0
+          },
+          "hit": {
+            "sound": "block.sulfur.hit",
+            "volume": 0.3,
+            "pitch": 0.5
+          },
+          "fall": {
+            "sound": "block.sulfur.hit",
+            "volume": 1.0,
+            "pitch": 0.75
+          }
+        }
+      },
+      "potent_sulfur": {
+        "volume": 1.0,
+        "pitch": 1.0,
+        "events": {
+          "step": {
+            "sound": "block.potent_sulfur.step",
+            "volume": 0.3,
+            "pitch": 1.0
+          },
+          "hit": {
+            "sound": "block.potent_sulfur.hit",
+            "volume": 0.3,
+            "pitch": 0.5
+          },
+          "fall": {
+            "sound": "block.potent_sulfur.hit",
+            "volume": 1.0,
+            "pitch": 0.75
+          }
+        }
+      },
+      "cinnabar": {
+        "volume": 1.0,
+        "pitch": 1.0,
+        "events": {
+          "step": {
+            "sound": "block.cinnabar.step",
+            "volume": 0.3,
+            "pitch": 1.0
+          },
+          "hit": {
+            "sound": "block.cinnabar.hit",
+            "volume": 0.5,
+            "pitch": 0.5
+          },
+          "fall": {
+            "sound": "block.cinnabar.hit",
+            "volume": 1.0,
+            "pitch": 0.75
+          }
+        }
+      }
+    }
+  },
+  "entity_sounds": {
+    "entities": {
+      "sulfur_cube": {
+        "volume": 0.8,
+        "pitch": [ 0.8, 1.2 ],
+        "events": {
+          "death": "mob.sulfur_cube.death",
+          "hurt": "mob.sulfur_cube.hurt",
+          "squish.big": "mob.sulfur_cube.jump",
+          "squish.small": "mob.sulfur_cube.small.jump",
+          "bounce": "mob.sulfur_cube.bounce",
+          "pushed_by_player": "mob.sulfur_cube.push"
+        },
+        "variants": {
+          "key": "query.variant == 1 ? 'small' : query.property('minecraft:with_block') ? 'with_block' : 'regular'",
+          "map": {
+            "small": {
+              "pitch": 1.0,
+              "volume": 1.0,
+              "events": {
+                "squish.small": {
+                  "sound": "mob.sulfur_cube.small.jump",
+                  "volume": 1.0,
+                  "pitch": 0.5
+                },
+                "hurt": {
+                  "sound": "mob.sulfur_cube.small.hurt",
+                  "volume": 1.0,
+                  "pitch": 0.5
+                },
+                "death": {
+                  "sound": "mob.sulfur_cube.small.death",
+                  "volume": 1.0,
+                  "pitch": 0.5
+                }
+              }
+            },
+            "regular": {
+              "pitch": 1.0,
+              "volume": 1.0,
+              "events": {
+                "squish.big": {
+                  "sound": "mob.sulfur_cube.jump",
+                  "volume": 1.0
+                },
+                "death": {
+                  "sound": "mob.sulfur_cube.death",
+                  "volume": 0.5,
+                  "pitch": 0.9
+                },
+                "hurt": {
+                  "sound": "mob.sulfur_cube.hurt",
+                  "volume": [ 0.5, 1.5 ],
+                  "pitch": [ 0.8, 1.2 ]
+                }
+              }
+            },
+            "with_block": {
+              "pitch": 1.0,
+              "volume": 1.0,
+              "events": {
+                "hurt": {
+                  "sound": "mob.sulfur_cube.with_block.hit",
+                  "volume": [ 0.5, 1.5 ],
+                  "pitch": [ 0.8, 1.2 ]
+                },
+                "pushed_by_player": {
+                  "sound": "mob.sulfur_cube.push",
+                  "volume": 1.0,
+                  "pitch": [ 0.8, 1.2 ]
+                },
+                "bounce": {
+                  "sound": "mob.sulfur_cube.bounce",
+                  "volume": 1.0,
+                  "pitch": [ 0.8, 1.2 ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
