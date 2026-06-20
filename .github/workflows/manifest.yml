@@ -1,0 +1,29 @@
+name: Generate Web Manifest
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: 権限の付与とスクリプト実行
+        run: |
+          chmod +x manifest.sh
+          ./manifest.sh
+
+      - name: 生成結果の確認
+        run: |
+          cat manifest.json
+
+      - name: 変更のコミットとプッシュ（オプション）
+        # 必要であれば、生成されたjsonを自動でコミットしてリポジトリに保存する場合
+        run: |
+          git config --global user.name "Gemini-Bot"
+          git config --global user.email "bot@example.com"
+          git add manifest.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update manifest.json [skip ci]" && git push)
