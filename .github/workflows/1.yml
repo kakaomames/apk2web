@@ -185,9 +185,14 @@ jobs:
           cp -r logic-js/* reports/logic/ 2>/dev/null || true
           cp -r native-report/* reports/native/ 2>/dev/null || true
           cp -r resources/* reports/resources/ 2>/dev/null || true
+          
+          # ✨ ここで巨大なライブラリフォルダを根こそぎ削除する（Gitに含めない！）
+          find reports/resources -type d -name "lib" -exec rm -rf {} +
+          find reports/resources -type f -name "*.so" -delete
+          
           git add reports/
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Update Analysis Reports and JS Logic"
+            git commit -m "Update Analysis Reports (excluding heavy binaries)"
             git push
           else
             echo "No changes to commit."
