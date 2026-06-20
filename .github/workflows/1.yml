@@ -141,7 +141,7 @@ jobs:
       - name: Install JADX
         run: |
           echo ">> Downloading JADX from official release..."
-          curl -L https://github.com/skylot/jadx/releases/latest/download/jadx-linux-x64.zip -o jadx.zip
+          curl -L https://github.com/skylot/jadx/releases/download/v1.5.5/jadx-1.5.5.zip -o jadx.zip
           unzip -q jadx.zip -d jadx
           # パスを通すことで、以降のステップでjadxコマンドが使えるようになる
           echo "$PWD/jadx/bin" >> $GITHUB_PATH
