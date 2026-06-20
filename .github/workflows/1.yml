@@ -130,23 +130,34 @@ jobs:
           path: decoded/
           retention-days: 1
 
-  # 5. Logic部隊
-  # 5. Logic部隊
+  # 5. Logic部隊（修正版）
   decompile-logic:
     needs: merge-apk
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Environment
+      
+      # 補給戦術を変更：GitHubから直接バイナリをダウンロード
+      - name: Install JADX
         run: |
-          sudo snap install jadx --classic  # snap経由に変更
+          echo ">> Downloading JADX from official release..."
+          curl -L https://github.com/skylot/jadx/releases/latest/download/jadx-linux-x64.zip -o jadx.zip
+          unzip -q jadx.zip -d jadx
+          # パスを通すことで、以降のステップでjadxコマンドが使えるようになる
+          echo "$PWD/jadx/bin" >> $GITHUB_PATH
+      
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
+          
+      - name: Verify JADX
+        run: jadx --version
+        
       - name: Run Build Script
         run: |
           chmod +x build.sh
-          bash build.sh
+          ./build.sh
+          
       - uses: actions/upload-artifact@v4
         with:
           name: logic-js
