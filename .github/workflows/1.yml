@@ -7,21 +7,27 @@ on:
 
 jobs:
   # 1. 掃除部隊
+  # 1. 掃除部隊
   cleanup-artifacts:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       actions: write
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
       - name: Purge Old Artifacts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ">> Starting cleanup..."
-          ARTIFACTS=$(gh api repos/:owner/:repo/actions/artifacts -q '.artifacts[].id')
+          # 明示的にリポジトリを指定する方法でも回避可能だが、
+          # checkoutがあれば標準の記法で動作する
+          ARTIFACTS=$(gh api repos/${{ github.repository }}/actions/artifacts -q '.artifacts[].id')
           for id in $ARTIFACTS; do
             echo "Deleting artifact $id..."
-            gh api repos/:owner/:repo/actions/artifacts/$id -X DELETE
+            gh api repos/${{ github.repository }}/actions/artifacts/$id -X DELETE
           done
           echo ">> Cleanup complete!"
 
