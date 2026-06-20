@@ -18,7 +18,8 @@ jobs:
 
       - name: 生成結果の確認
         run: |
-          cat manifest.json
+          # 全ての manifest.json を探し出して中身を表示する
+          find . -name "manifest.json" -exec echo "--- File: {} ---" \; -exec cat {} \; 
 
       - name: 変更のコミットとプッシュ（オプション）
         # 必要であれば、生成されたjsonを自動でコミットしてリポジトリに保存する場合
