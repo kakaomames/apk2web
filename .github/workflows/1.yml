@@ -130,20 +130,24 @@ jobs:
           path: decoded/
           retention-days: 1
 
-  # 5. Logic部隊（修正版）
+  # 5. Logic部隊（権限修正済み）
   decompile-logic:
     needs: merge-apk
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      # 補給戦術を変更：GitHubから直接バイナリをダウンロード
+      # 補給戦術を変更：バイナリに実行権限を与える！
       - name: Install JADX
         run: |
-          echo ">> Downloading JADX from official release..."
+          echo ">> Downloading JADX v1.5.5..."
           curl -L https://github.com/skylot/jadx/releases/download/v1.5.5/jadx-1.5.5.zip -o jadx.zip
           unzip -q jadx.zip -d jadx
-          # パスを通すことで、以降のステップでjadxコマンドが使えるようになる
+          
+          # 💡 ここが重要！実行権限を付与する
+          chmod +x jadx/bin/jadx
+          
+          # パスを通す
           echo "$PWD/jadx/bin" >> $GITHUB_PATH
       
       - uses: actions/download-artifact@v4
