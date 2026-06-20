@@ -1,61 +1,77 @@
 #!/bin/bash
 
-# 実行ディレクトリ配下の AndroidManifest.xml を探索
+# 全ての AndroidManifest.xml を探索して manifest.json を生成
 find . -name "AndroidManifest.xml" | while read -r xml_path; do
-    target_dir=$(dirname "$xml_path")
-    output_json="$target_dir/manifest.json"
+    xml_dir=$(dirname "$xml_path")
+    output_json="$xml_dir/manifest.json"
+    
+    echo "🔍 処理中: $xml_path"
 
-    echo "🔍 探索中: $xml_path"
-
-    # PythonでXMLからiconタグを抽出し、resフォルダから実体を探す
     python3 -c "
 import os
 import xml.etree.ElementTree as ET
 import json
+import glob
+
+# AndroidManifest.xmlの場所からresフォルダを探す
+def find_res_path(base_dir):
+    for root, dirs, files in os.walk(base_dir):
+        if 'res' in dirs:
+            return os.path.join(root, 'res')
+    return None
 
 xml_path = '$xml_path'
-res_root = os.path.join(os.path.dirname(xml_path), 'res')
+base_dir = os.path.dirname(xml_path)
+res_dir = find_res_path(base_dir)
 
-try:
-    tree = ET.parse(xml_path)
-    root = tree.getroot()
-    ns = {'android': 'http://schemas.android.com/apk/res/android'}
-    
-    # 1. アイコン参照を取得 (例: @mipmap/ic_launcher)
-    app = root.find('application')
-    icon_ref = app.attrib.get('{http://schemas.android.com/apk/res/android}icon') if app is not None else None
-    
-    # デフォルト値
-    icon_path = 'https://kakaomames.github.io/rei/logo.png' # 念の為のフォールバック
-    
-    if icon_ref and icon_ref.startswith('@'):
-        # @mipmap/ic_launcher -> ['mipmap', 'ic_launcher']
-        parts = icon_ref[1:].split('/')
-        if len(parts) == 2:
-            res_type, res_name = parts
-            
-            # 2. resフォルダからファイルを探す
-            for root_dir, dirs, files in os.walk(res_root):
-                if res_type in root_dir: # drawable-hdpi 等
-                    for f in files:
-                        if f.startswith(res_name):
-                            # 相対パスを作成
-                            found = os.path.relpath(os.path.join(root_dir, f), os.path.dirname(xml_path))
-                            icon_path = found.replace('\\\\', '/') # Windows対策
-                            break
-                    if icon_path != 'https://kakaomames.github.io/rei/logo.png': break
+if not res_dir:
+    print(f'❌ resフォルダが見つかりません: {base_dir}')
+    exit(1)
 
-    # マニフェスト書き出し
-    manifest = {
-        'name': app.attrib.get('{http://schemas.android.com/apk/res/android}label', 'App').replace('@string/', ''),
-        'icons': [{'src': icon_path, 'sizes': '192x192', 'type': 'image/png'}]
-    }
-    
-    with open('$output_json', 'w', encoding='utf-8') as f:
-        json.dump(manifest, f, indent=4, ensure_ascii=False)
-        
-except Exception as e:
-    print(f'Error: {e}')
+# XML解析
+tree = ET.parse(xml_path)
+root = tree.getroot()
+ns = '{http://schemas.android.com/apk/res/android}'
+app = root.find('application')
+
+# 値の抽出補助関数
+def get_string_from_xml(key):
+    # key例: @string/app_name
+    name = key.split('/')[-1]
+    # 全てのvaluesフォルダ内のstrings.xmlを探す
+    for s_file in glob.glob(os.path.join(res_dir, 'values*', 'strings.xml')):
+        try:
+            stree = ET.parse(s_file)
+            for s in stree.findall('.//string'):
+                if s.get('name') == name:
+                    return s.text
+        except: continue
+    return 'UnknownApp'
+
+# 値の抽出
+label_ref = app.attrib.get(ns + 'label') if app is not None else None
+app_name = get_string_from_xml(label_ref) if label_ref and label_ref.startswith('@') else 'App'
+
+icon_ref = app.attrib.get(ns + 'icon') if app is not None else None
+icon_path = 'https://kakaomames.github.io/rei/logo.png' # デフォルト
+if icon_ref and icon_ref.startswith('@'):
+    icon_name = icon_ref.split('/')[-1]
+    # res/mipmap-* または drawable-* からファイルを探す
+    found_files = glob.glob(os.path.join(res_dir, '*', f'{icon_name}.*'))
+    if found_files:
+        icon_path = os.path.relpath(found_files[0], base_dir)
+
+# JSON出力
+manifest = {
+    'name': app_name,
+    'short_name': app_name[:12],
+    'start_url': 'index.html',
+    'display': 'standalone',
+    'icons': [{'src': icon_path, 'sizes': 'any', 'type': 'image/png'}]
+}
+
+with open('$output_json', 'w', encoding='utf-8') as f:
+    json.dump(manifest, f, indent=4, ensure_ascii=False)
+print(f'✅ 生成完了: $output_json (res: {res_dir})')
 "
-    echo "✅ 生成完了: $output_json"
 done
