@@ -2,6 +2,10 @@ name: Generate Web Manifest
 
 on:
   workflow_dispatch:
+# --- ここを追加 ---
+permissions:
+  contents: write
+# ------------------
 
 jobs:
   build:
