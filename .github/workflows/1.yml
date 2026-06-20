@@ -6,76 +6,58 @@ on:
   workflow_dispatch:
 
 jobs:
+  # 1. 掃除部隊：過去の遺産を整理する
   cleanup-artifacts:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - name: Purge Old Artifacts
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # 現在のリポジトリの Artifact ID を全取得して削除
           echo ">> Starting cleanup..."
-          # 権限がない場合は失敗する可能性があるため || true で制御
           ARTIFACTS=$(gh api repos/:owner/:repo/actions/artifacts -q '.artifacts[].id')
           for id in $ARTIFACTS; do
             echo "Deleting artifact $id..."
             gh api repos/:owner/:repo/actions/artifacts/$id -X DELETE
           done
           echo ">> Cleanup complete!"
-  # 1. マージ部隊：APKSを1つのAPKに統合して保存
+
+  # 2. マージ部隊：APKSを統合してAPKへ
   merge-apk:
+    needs: cleanup-artifacts
     runs-on: ubuntu-24.04-arm
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      
-      # 1. 原料（.apks）をダウンロード
       - name: Download .apks from Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p assets
-          # 最新のリリースタグから .apks を取得
-          gh release download "$LATEST_TAG" --pattern "*.apks" --dir ./assets/ --clobber
-
-      # 2. マージ実行（APKEditor）
-      # 2. マージ実行（APKEditor）
+          gh release download --pattern "*.apks" --dir ./assets/ --clobber
       - name: Setup & Merge
         run: |
           curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
           mkdir -p output
-          
-          # 💡 ここが新しい戦術！ターゲットを明示的に指定する
-          targets=(
-            "com.mojang.minecraftpe_1.26.23.1.apks"
-            "pokemon.apks"
-          )
-          
+          targets=("com.mojang.minecraftpe_1.26.23.1.apks" "pokemon.apks")
           for target in "${targets[@]}"; do
              file="assets/$target"
              if [ -f "$file" ]; then
                echo ">> Target acquired: $file. Merging..."
                java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
-             else
-               echo "!! Warning: $file not found in assets/ (Skipping)"
              fi
           done
-          
-          ls -lh output/
-          
-
-      # 3. 完成品（.apk）を次の部隊へ転送
-      - name: Upload Merged APK
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: merged-apk
           path: output/*.apk
-          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
+          retention-days: 1
 
-  # 2. Native部隊：ライブラリ解析（WASM変換の下準備）
+  # 3. Native部隊：SOファイル解析
   analyze-native:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
@@ -85,103 +67,86 @@ jobs:
           name: merged-apk
       - name: Analyze .so files
         run: |
-          mkdir -p extracted
+          mkdir -p native-report
           for apk in *.apk; do
+            [ -e "$apk" ] || continue
             unzip -q "$apk" -d "extracted/$apk"
-            echo "--- Report for $apk ---" >> native_report.txt
+            echo "--- Report for $apk ---" >> native-report/native_report.txt
             find "extracted/$apk" -name "*.so" | while read -r so; do
-              echo "FILE: $so" >> native_report.txt
-              nm -D "$so" >> native_report.txt 2>/dev/null
+              echo "FILE: $so" >> native-report/native_report.txt
+              nm -D "$so" >> native-report/native_report.txt 2>/dev/null
             done
           done
       - uses: actions/upload-artifact@v4
         with:
           name: native-report
-          path: native_report.txt
-          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
+          path: native-report/
+          retention-days: 1
 
-  # 3. Resource部隊：XML -> HTML/CSS抽出用の前処理
+  # 4. Resource部隊：XML -> JSONインデックス化
   extract-resources:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
-    permissions:
-      contents: write
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
-
       - name: Prepare APKEditor
         run: |
           curl -f -L "https://github.com/REAndroid/APKEditor/releases/download/V1.4.9/APKEditor-1.4.9.jar" -o APKEditor.jar
-
-      - name: Extract & Index Resources
+      - name: Extract & Index
         run: |
           mkdir -p decoded
-          
-          # 1. 各APKを展開してアプリごとのディレクトリに格納
           for apk in merged_*.apk; do
             [ -e "$apk" ] || continue
-            
-            # ファイル名からアプリ名を抽出（例: merged_pokemon.apk -> pokemon）
             APP_NAME=$(echo "$apk" | sed -e 's/merged_//' -e 's/\.apk//')
             OUT_DIR="decoded/$APP_NAME"
-            
-            echo ">> Decoding $apk to $OUT_DIR..."
             java -jar APKEditor.jar d -i "$apk" -o "$OUT_DIR"
           done
-          
-          # 2. Pythonでインデックス(JSON)を生成
-          echo ">> Generating index.json..."
           python3 -c "
-          import json, os, glob
-          
-          # 存在するアプリディレクトリをスキャン
-          apps = [d for d in os.listdir('decoded') if os.path.isdir(os.path.join('decoded', d))]
-          index = {'apps': {}}
-
-          for app in apps:
-              # 各アプリのレイアウトファイルを列挙
-              layout_path = os.path.join('decoded', app, 'res', 'layout', '*.xml')
-              files = glob.glob(layout_path)
-              index['apps'][app] = [os.path.basename(f) for f in files]
-              
-          with open('decoded/index.json', 'w') as f:
-              json.dump(index, f, indent=2)
-          "
-          echo "[ACTION] リソース抽出とJSON目録作成が完了しました！"
-
+import json, os, glob
+apps = [d for d in os.listdir('decoded') if os.path.isdir(os.path.join('decoded', d))]
+index = {'apps': {}}
+for app in apps:
+    layout_path = os.path.join('decoded', app, 'res', 'layout', '*.xml')
+    files = glob.glob(layout_path)
+    index['apps'][app] = [os.path.basename(f) for f in files]
+with open('decoded/index.json', 'w') as f:
+    json.dump(index, f, indent=2)
+"
       - uses: actions/upload-artifact@v4
         with:
           name: resources
           path: decoded/
           retention-days: 1
 
-  # 4. Logic部隊：DEX -> JS (解析)
+  # 5. Logic部隊：DEX -> JS変換
   decompile-logic:
     needs: merge-apk
-    runs-on: ubuntu-24.04-arm
-    permissions:
-      contents: write
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - name: Setup Environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jadx
       - uses: actions/download-artifact@v4
         with:
           name: merged-apk
-      - name: Decompile DEX
+      - name: Run Build Script
         run: |
-          # 簡易的にdexdump等で解析、またはJADXを使用
-          echo "Starting logic analysis..." > logic_report.txt
-          # ここに解析コマンドを順次追加
+          chmod +x build.sh
+          ./build.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: logic-report
-          path: logic_report.txt
-          retention-days: 1  # 👈 これを全ジョブに入れてくれ！
+          name: logic-js
+          path: output_js/
+          retention-days: 1
 
-  # 5. 集約部隊：結果をリポジトリに同期
+  # 6. 集約部隊：全てをリポジトリへ同期
   sync-to-repo:
     needs: [analyze-native, extract-resources, decompile-logic]
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -192,14 +157,19 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [XML-Integrator-Bot]"
           
-          # 1. 不要なmerged-apkなどはadd対象から外す
-          # 2. レポート系のディレクトリだけを正確にaddする
-          git add logic-report/ native-report/ resources/ 2>/dev/null || true
+          # 各ディレクトリを作成
+          mkdir -p reports/logic reports/native reports/resources
           
-          # 3. 変更があればコミット
-          # diffで確認し、変更がある場合のみコミットするようにする
+          # 各Artifactから展開されたディレクトリをreports配下へコピー
+          # それぞれのジョブで出力されたArtifact名と一致させる
+          cp -r logic-js/* reports/logic/ 2>/dev/null || true
+          cp -r native-report/* reports/native/ 2>/dev/null || true
+          cp -r resources/* reports/resources/ 2>/dev/null || true
+          
+          git add reports/
+          
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Update Analysis Reports"
+            git commit -m "Update Analysis Reports and JS Logic"
             git push
           else
             echo "No changes to commit."
