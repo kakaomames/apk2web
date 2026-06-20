@@ -1,9 +1,12 @@
 {
-    "name": "app_name",
+    "name": "宝可探险",
+    "short_name": "宝可探险",
+    "start_url": "index.html",
+    "display": "standalone",
     "icons": [
         {
-            "src": "https://kakaomames.github.io/rei/logo.png",
-            "sizes": "192x192",
+            "src": "resources/package_1/res/mipmap-xhdpi/ic_launcher.png",
+            "sizes": "any",
             "type": "image/png"
         }
     ]

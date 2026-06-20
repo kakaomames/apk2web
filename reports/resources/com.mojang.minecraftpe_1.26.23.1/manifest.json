@@ -1,9 +1,12 @@
 {
-    "name": "app_name",
+    "name": "Minecraft",
+    "short_name": "Minecraft",
+    "start_url": "index.html",
+    "display": "standalone",
     "icons": [
         {
-            "src": "https://kakaomames.github.io/rei/logo.png",
-            "sizes": "192x192",
+            "src": "resources/package_1/res/drawable-xxhdpi/icon.png",
+            "sizes": "any",
             "type": "image/png"
         }
     ]
