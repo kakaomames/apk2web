@@ -191,7 +191,16 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [XML-Integrator-Bot]"
-          cp */*.txt . || true
-          git add *.txt
-          git commit -m "Update Analysis Reports" || true
-          git push || true
+          
+          # 1. 不要なmerged-apkなどはadd対象から外す
+          # 2. レポート系のディレクトリだけを正確にaddする
+          git add logic-report/ native-report/ resources/ 2>/dev/null || true
+          
+          # 3. 変更があればコミット
+          # diffで確認し、変更がある場合のみコミットするようにする
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Update Analysis Reports"
+            git push
+          else
+            echo "No changes to commit."
+          fi
