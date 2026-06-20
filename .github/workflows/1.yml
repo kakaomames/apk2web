@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # 1. 掃除部隊：過去の遺産を整理する
+  # 1. 掃除部隊
   cleanup-artifacts:
     runs-on: ubuntu-latest
     permissions:
@@ -25,7 +25,7 @@ jobs:
           done
           echo ">> Cleanup complete!"
 
-  # 2. マージ部隊：APKSを統合してAPKへ
+  # 2. マージ部隊
   merge-apk:
     needs: cleanup-artifacts
     runs-on: ubuntu-24.04-arm
@@ -45,11 +45,11 @@ jobs:
           mkdir -p output
           targets=("com.mojang.minecraftpe_1.26.23.1.apks" "pokemon.apks")
           for target in "${targets[@]}"; do
-             file="assets/$target"
-             if [ -f "$file" ]; then
-               echo ">> Target acquired: $file. Merging..."
-               java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
-             fi
+            file="assets/$target"
+            if [ -f "$file" ]; then
+              echo ">> Target acquired: $file. Merging..."
+              java -jar APKEditor.jar m -i "$file" -o "output/merged_$(basename "$file" .apks).apk"
+            fi
           done
       - uses: actions/upload-artifact@v4
         with:
@@ -57,7 +57,7 @@ jobs:
           path: output/*.apk
           retention-days: 1
 
-  # 3. Native部隊：SOファイル解析
+  # 3. Native部隊
   analyze-native:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
@@ -83,7 +83,7 @@ jobs:
           path: native-report/
           retention-days: 1
 
-  # 4. Resource部隊：XML -> JSONインデックス化
+  # 4. Resource部隊
   extract-resources:
     needs: merge-apk
     runs-on: ubuntu-24.04-arm
@@ -104,23 +104,23 @@ jobs:
             java -jar APKEditor.jar d -i "$apk" -o "$OUT_DIR"
           done
           python3 -c "
-import json, os, glob
-apps = [d for d in os.listdir('decoded') if os.path.isdir(os.path.join('decoded', d))]
-index = {'apps': {}}
-for app in apps:
-    layout_path = os.path.join('decoded', app, 'res', 'layout', '*.xml')
-    files = glob.glob(layout_path)
-    index['apps'][app] = [os.path.basename(f) for f in files]
-with open('decoded/index.json', 'w') as f:
-    json.dump(index, f, indent=2)
-"
+          import json, os, glob
+          apps = [d for d in os.listdir('decoded') if os.path.isdir(os.path.join('decoded', d))]
+          index = {'apps': {}}
+          for app in apps:
+              layout_path = os.path.join('decoded', app, 'res', 'layout', '*.xml')
+              files = glob.glob(layout_path)
+              index['apps'][app] = [os.path.basename(f) for f in files]
+          with open('decoded/index.json', 'w') as f:
+              json.dump(index, f, indent=2)
+          "
       - uses: actions/upload-artifact@v4
         with:
           name: resources
           path: decoded/
           retention-days: 1
 
-  # 5. Logic部隊：DEX -> JS変換
+  # 5. Logic部隊
   decompile-logic:
     needs: merge-apk
     runs-on: ubuntu-latest
@@ -143,7 +143,7 @@ with open('decoded/index.json', 'w') as f:
           path: output_js/
           retention-days: 1
 
-  # 6. 集約部隊：全てをリポジトリへ同期
+  # 6. 集約部隊
   sync-to-repo:
     needs: [analyze-native, extract-resources, decompile-logic]
     runs-on: ubuntu-latest
@@ -156,18 +156,11 @@ with open('decoded/index.json', 'w') as f:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action [XML-Integrator-Bot]"
-          
-          # 各ディレクトリを作成
           mkdir -p reports/logic reports/native reports/resources
-          
-          # 各Artifactから展開されたディレクトリをreports配下へコピー
-          # それぞれのジョブで出力されたArtifact名と一致させる
           cp -r logic-js/* reports/logic/ 2>/dev/null || true
           cp -r native-report/* reports/native/ 2>/dev/null || true
           cp -r resources/* reports/resources/ 2>/dev/null || true
-          
           git add reports/
-          
           if ! git diff-index --quiet HEAD --; then
             git commit -m "Update Analysis Reports and JS Logic"
             git push
