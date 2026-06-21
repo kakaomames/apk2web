@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf output_web
 # missionLog関数
 missionLog() {
     echo -e "[$(date '+%Y-%m-%d %H:%M:%S')] [\033[32mMISSION\033[0m] $1"
