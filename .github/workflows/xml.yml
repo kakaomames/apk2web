@@ -1,4 +1,4 @@
-name: Generate Web Manifest
+name: Generate Web Xml
 
 on:
   workflow_dispatch:
@@ -19,6 +19,7 @@ jobs:
         run: |
           chmod +x manifest.sh
           ./manifest.sh
+          bash xml.sh
 
       - name: 生成結果の確認
         run: |
