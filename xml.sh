@@ -5,19 +5,31 @@ missionLog() {
     echo -e "[$(date '+%Y-%m-%d %H:%M:%S')] [\033[32mMISSION\033[0m] $1"
 }
 
-# 1. 探索とループ処理
-find . -type d -name "res" | while read -r res_dir; do
-    # resフォルダの親ディレクトリ名をプロジェクト名として取得 (例: ./apk1/res -> project=apk1)
-    project_name=$(basename "$(dirname "$res_dir")")
+# 1. ターゲット探索とプロジェクト名抽出
+# 構造: <name>/resources/package_1/res
+find . -type d -path "*/resources/package_1/res" | while read -r res_dir; do
+    
+    # パスからプロジェクト名を抽出
+    # 1. dirname .../res -> .../package_1
+    # 2. dirname .../package_1 -> .../resources
+    # 3. dirname .../resources -> .../<name>
+    # 4. basename .../<name> -> <name>
+    parent_path=$(dirname "$(dirname "$(dirname "$res_dir")")")
+    project_name=$(basename "$parent_path")
+
+    # 念のため、変なディレクトリを拾わないようにチェック
+    if [[ "$project_name" == "." || -z "$project_name" ]]; then
+        missionLog "スキップ: プロジェクト名が特定できないパスです ($res_dir)"
+        continue
+    fi
+
     output_dir="output_web/$project_name"
-    
-    missionLog "ターゲット発見: $res_dir (プロジェクト: $project_name)"
-    
-    # 出力先ディレクトリ作成
+    missionLog "発見: [$project_name] のリソースを処理開始..."
+
+    # ディレクトリ作成
     mkdir -p "$output_dir"
 
-    # 2. Node.js: JSON集約 (その都度生成)
-    # 探索対象をそのres_dirに限定する
+    # 2. Node.js: JSON集約 (そのプロジェクト専用)
     node -e "
 const fs = require('fs');
 const path = require('path');
@@ -35,26 +47,25 @@ const walkSync = (dir) => {
 walkSync('$res_dir');
 fs.writeFileSync('$output_dir/bundle.json', JSON.stringify(resBundle, null, 2));
 "
-    missionLog "Step 1: $project_name のJSON集約完了"
+    missionLog "Step 1: [$project_name] JSON集約完了"
 
-    # 3. Python: HTML変換 (その都度生成)
+    # 3. Python: HTML変換 (そのプロジェクト専用)
     python3 -c "
 import json, os, xml.etree.ElementTree as ET
-with open('$output_dir/bundle.json', 'r') as f:
-    data = json.load(f)
-
-for path, content in data.items():
-    if 'res/layout' in path:
-        try:
+try:
+    with open('$output_dir/bundle.json', 'r') as f:
+        data = json.load(f)
+    for path, content in data.items():
+        if 'res/layout' in path:
             root = ET.fromstring(content)
-            # 簡易HTML化 (必要に応じてここを強化)
-            html = f'<html><body><h1>{root.tag}</h1></body></html>'
+            html = f'<html><body><h1>{root.tag}</h1><pre>{content[:200]}...</pre></body></html>'
             out_file = os.path.join('$output_dir', os.path.basename(path).replace('.xml', '.html'))
             with open(out_file, 'w', encoding='utf-8') as f:
                 f.write(html)
-        except: pass
+except Exception as e:
+    print(f'Error: {e}')
 "
-    missionLog "Step 2: $project_name のWeb化完了！場所: $output_dir"
+    missionLog "Step 2: [$project_name] Web化完了！場所: $output_dir"
 done
 
-missionLog "全オペレーション終了！全てのresフォルダを処理したぞ！"
+missionLog "全オペレーション終了！全てのプロジェクトを個別処理したぞ！"
