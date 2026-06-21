@@ -1,63 +1,56 @@
-import json
-import os
-import sys
-import xml.etree.ElementTree as ET
+import json, os, sys, xml.etree.ElementTree as ET
 
-# 1. Androidの名前空間を処理するためのヘルパー
-def get_android_attr(el, attr_name):
-    # Android特有の名前空間
-    ns = "{http://schemas.android.com/apk/res/android}"
-    # 名前空間付きキーと、そのままのキーの両方を探す
-    return el.attrib.get(ns + attr_name, el.attrib.get(attr_name, ''))
+# 優先言語設定
+TARGET_LANG = "ja"
 
-# 2. 再帰的にHTMLタグを構築する関数
-def build_html(el):
-    # タグ名の抽出 (名前空間があれば除去)
-    tag_name = el.tag.split('}')[-1]
+def load_strings(data):
+    """ プロジェクト内のstrings.xmlを読み込み辞書化 """
+    string_map = {}
+    # 1. デフォルト (values/strings.xml)
+    for path, content in data.items():
+        if 'values/strings.xml' in path:
+            for s in ET.fromstring(content).findall('string'):
+                string_map[s.get('name')] = s.text or ""
+    # 2. 指定言語 (values-ja/strings.xml) 上書き優先
+    lang_dir = f"values-{TARGET_LANG}"
+    for path, content in data.items():
+        if lang_dir in path and 'strings.xml' in path:
+            for s in ET.fromstring(content).findall('string'):
+                string_map[s.get('name')] = s.text or ""
+    return string_map
+
+def resolve_text(text_val, string_map):
+    if not text_val: return ""
+    if text_val.startswith('@string/'):
+        return string_map.get(text_val.split('/')[-1], text_val)
+    return text_val
+
+def build_html(el, string_map):
+    tag = el.tag.split('}')[-1]
+    html_tag = {"LinearLayout": "div", "TextView": "p", "Button": "button", "ImageView": "img"}.get(tag, "div")
     
-    # マッピング辞書 (ここにどんどん追加していこう)
-    html_tag = {
-        "LinearLayout": "div", "RelativeLayout": "div", "FrameLayout": "div",
-        "TextView": "p", "Button": "button", "ImageView": "img", 
-        "EditText": "input", "ActionMenuView": "nav"
-    }.get(tag_name, "div")
-
-    # 属性の取得
-    text_content = get_android_attr(el, 'text')
-    # 子要素の再帰処理
-    children_html = "".join([build_html(child) for child in el])
+    # テキスト解決
+    raw_text = el.attrib.get('{http://schemas.android.com/apk/res/android}text', '')
+    final_text = resolve_text(raw_text, string_map)
+    if not final_text and el.text: final_text = el.text.strip()
     
-    # HTML生成
-    return f'<{html_tag} class="{tag_name}">{text_content}{children_html}</{html_tag}>'
+    children = "".join([build_html(child, string_map) for child in el])
+    return f'<{html_tag} class="{tag}">{final_text}{children}</{html_tag}>'
 
-# 3. メイン処理
-def main():
-    if len(sys.argv) < 3:
-        print("使い方: python converter.py <json_file> <output_dir>")
-        return
+# メイン処理
+json_path, output_dir = sys.argv[1], sys.argv[2]
+with open(json_path, 'r', encoding='utf-8') as f:
+    data = json.load(f)
 
-    json_path = sys.argv[1]
-    output_dir = sys.argv[2]
+# 辞書構築
+string_map = load_strings(data)
 
-    with open(json_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    for file_path, xml_content in data.items():
-        # レイアウトファイルのみ処理
-        if 'res/layout' in file_path:
-            try:
-                # XMLパース
-                root = ET.fromstring(xml_content)
-                html_body = build_html(root)
-                
-                # 保存
-                filename = os.path.basename(file_path).replace('.xml', '.html')
-                os.makedirs(output_dir, exist_ok=True)
-                with open(os.path.join(output_dir, filename), 'w', encoding='utf-8') as f:
-                    f.write(f"<html><body>{html_body}</body></html>")
-                print(f"[SUCCESS] {filename} を生成しました")
-            except Exception as e:
-                print(f"[ERROR] {file_path} の解析失敗: {e}")
-
-if __name__ == "__main__":
-    main()
+# 変換実行
+for path, content in data.items():
+    if 'res/layout' in path:
+        try:
+            root = ET.fromstring(content)
+            html = f"<html><body>{build_html(root, string_map)}</body></html>"
+            out = os.path.join(output_dir, os.path.basename(path).replace('.xml', '.html'))
+            with open(out, 'w', encoding='utf-8') as f: f.write(html)
+        except: pass
