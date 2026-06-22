@@ -1,1 +1,1 @@
-.LinearLayout { display: flex; flex-direction: column; } .RelativeLayout { position: relative; } .TextView { margin: 5px; }
+.LinearLayout { display: flex; flex-direction: column; } .ImageView { max-width: 100%; }
