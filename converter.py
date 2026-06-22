@@ -6,20 +6,24 @@ import xml.etree.ElementTree as ET
 TARGET_LANG = "ja"
 NS = "{http://schemas.android.com/apk/res/android}"
 
-# 1. 画像マップを作成 (drawable名 -> 相対パス)
+# 1. クラス名の掃除機 (例: android.support.v7.widget.ActionMenuView -> ActionMenuView)
+def clean_class_name(tag):
+    full_name = tag.split('}')[-1]
+    return full_name.split('.')[-1]
+
+# 2. 画像マップ作成
 def build_image_map(project_dir):
     image_map = {}
-    for root, _, files in os.walk(os.path.join(project_dir, 'res')):
+    res_path = os.path.join(project_dir, 'res')
+    if not os.path.exists(res_path): return image_map
+    for root, _, files in os.walk(res_path):
         for file in files:
             if file.endswith(('.png', '.jpg', '.webp', '.xml')):
                 name = os.path.splitext(file)[0]
-                full_path = os.path.join(root, file)
-                # プロジェクトルートからの相対パス
-                rel_path = os.path.relpath(full_path, project_dir)
-                image_map[name] = rel_path
+                image_map[name] = os.path.relpath(os.path.join(root, file), project_dir)
     return image_map
 
-# 2. 文字列辞書構築
+# 3. 文字列辞書
 def load_strings(data):
     string_map = {}
     for path, content in data.items():
@@ -30,14 +34,16 @@ def load_strings(data):
             except: continue
     return string_map
 
-# 3. HTML構築
+# 4. HTML構築エンジン
 def build_html(el, string_map, image_map):
-    tag = el.tag.split('}')[-1]
+    class_name = clean_class_name(el.tag)
+    # ここでHTMLタグにマッピング
     tag_map = {
         "LinearLayout": "div", "RelativeLayout": "div", "FrameLayout": "div",
-        "TextView": "p", "Button": "button", "ImageView": "img", "View": "hr"
+        "TextView": "p", "Button": "button", "ImageView": "img", "View": "hr",
+        "ActionMenuView": "nav", "ActionBarContextView": "div"
     }
-    html_tag = tag_map.get(tag, "div")
+    html_tag = tag_map.get(class_name, "div")
     
     # 属性処理
     raw_text = el.attrib.get(NS + 'text', '')
@@ -46,7 +52,7 @@ def build_html(el, string_map, image_map):
     
     # 画像処理
     extra_attrs = ""
-    if tag == "ImageView":
+    if class_name == "ImageView":
         src = el.attrib.get(NS + 'src', '')
         if src.startswith('@drawable/'):
             name = src.split('/')[-1]
@@ -54,27 +60,27 @@ def build_html(el, string_map, image_map):
             extra_attrs = f' src="{path}"'
     
     children = "".join([build_html(child, string_map, image_map) for child in el])
-    return f'<{html_tag} class="{tag}"{extra_attrs}>{final_text}{children}</{html_tag}>'
+    return f'<{html_tag} class="{class_name}"{extra_attrs}>{final_text}{children}</{html_tag}>'
 
-# 4. メイン処理
+# 5. メイン司令塔
 def main():
     if len(sys.argv) < 3: return
     json_path, output_dir = sys.argv[1], sys.argv[2]
-    project_root = os.path.dirname(os.path.dirname(json_path)) # 適切なルートを推測
-    
+    project_root = os.path.abspath(os.path.join(os.path.dirname(json_path), '..', '..', '..')) # 調整が必要ならここを修正
+
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     # 事前準備
     image_map = build_image_map(project_root)
     string_map = load_strings(data)
-    
-    # CSS生成
     os.makedirs(output_dir, exist_ok=True)
+    
+    # 共通CSS
     with open(os.path.join(output_dir, 'common.css'), 'w', encoding='utf-8') as f:
-        f.write(".LinearLayout { display: flex; flex-direction: column; } .ImageView { max-width: 100%; }")
+        f.write(".LinearLayout { display: flex; flex-direction: column; }\n.ImageView { max-width: 100%; }")
 
-    # 全ファイル変換
+    # 変換実行
     for path, content in data.items():
         if 'res/layout' in path:
             try:
@@ -86,7 +92,8 @@ def main():
                 html = f'<html><head><link rel="stylesheet" href="common.css"><link rel="stylesheet" href="{css_name}"></head><body>{body}</body></html>'
                 
                 with open(os.path.join(output_dir, f"{filename}.html"), 'w', encoding='utf-8') as f: f.write(html)
-                with open(os.path.join(output_dir, css_name), 'w', encoding='utf-8') as f: f.write(f"/* {filename} layout */")
+                with open(os.path.join(output_dir, css_name), 'w', encoding='utf-8') as f: f.write(f"/* {filename} 固有のスタイル */")
+                print(f"[OK] {filename}.html 生成")
             except Exception as e:
                 print(f"[ERROR] {path}: {e}")
 
